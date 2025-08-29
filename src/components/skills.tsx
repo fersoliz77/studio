@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Code, Server, Brain, Palette, Users } from 'lucide-react';
+import { Users, Brain, Palette, PenTool, ClipboardCheck, LayoutTemplate } from 'lucide-react';
 import type { LucideIcon } from "lucide-react";
 
 interface Skill {
@@ -9,15 +9,14 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  { name: 'React & Next.js', icon: Code, category: 'Frontend' },
-  { name: 'TypeScript', icon: Code, category: 'Frontend' },
-  { name: 'Tailwind CSS', icon: Palette, category: 'Frontend' },
-  { name: 'Node.js', icon: Server, category: 'Backend' },
-  { name: 'Express', icon: Server, category: 'Backend' },
-  { name: 'MongoDB', icon: Server, category: 'Backend' },
-  { name: 'Problem Solving', icon: Brain, category: 'Soft Skills' },
-  { name: 'Teamwork', icon: Users, category: 'Soft Skills' },
-  { name: 'Communication', icon: Users, category: 'Soft Skills' },
+  { name: 'User Research', icon: Users, category: 'UX Research' },
+  { name: 'Usability Testing', icon: ClipboardCheck, category: 'UX Research' },
+  { name: 'Information Architecture', icon: Brain, category: 'UX Design' },
+  { name: 'Wireframing', icon: LayoutTemplate, category: 'UX Design' },
+  { name: 'Prototyping', icon: PenTool, category: 'UX Design' },
+  { name: 'UI Design', icon: Palette, category: 'UI Design' },
+  { name: 'Design Systems', icon: Palette, category: 'UI Design' },
+  { name: 'Figma', icon: PenTool, category: 'Tools' },
 ];
 
 export function Skills() {
@@ -25,8 +24,8 @@ export function Skills() {
     <section id="skills" className="py-20 md:py-28">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold font-headline">My Skills</h2>
-          <p className="text-lg text-muted-foreground mt-2">A collection of my technical and soft skills.</p>
+          <h2 className="text-3xl md:text-4xl font-bold font-headline">My UX/UI Expertise</h2>
+          <p className="text-lg text-muted-foreground mt-2">Specializing in creating intuitive and user-centered digital experiences.</p>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {skills.map((skill) => (
