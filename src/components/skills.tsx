@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import type { LucideIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
 
 interface Skill {
   name: string;
@@ -68,33 +69,64 @@ export function Skills() {
     category: t(`skills.${skillItem.categoryKey}`),
   }));
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 }
+  };
+
   return (
     <section id="skills" className="py-20 md:py-28">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-12">
+        <motion.div
+          className="text-center mb-12"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
+          variants={itemVariants}
+        >
           <h2 className="text-3xl md:text-4xl font-bold font-headline">{t('skills.title')}</h2>
           <p className="text-lg text-muted-foreground mt-2">{t('skills.description')}</p>
-        </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        </motion.div>
+        <motion.div
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           {skills.map((skill) => (
-            <Card
+            <motion.div
               key={skill.name}
-              className="text-center transition-all duration-300 ease-in-out
-                         hover:scale-105 hover:border-fireBlue
-                         hover:shadow-fireBlue hover:shadow-lg"
+              variants={itemVariants}
             >
-              <CardHeader>
-                <div className="mx-auto bg-primary text-primary-foreground rounded-full h-16 w-16 flex items-center justify-center">
-                  <skill.icon className="h-8 w-8" />
-                </div>
-              </CardHeader>
-              <CardContent>
-                <CardTitle className="text-lg">{skill.name}</CardTitle>
-                <p className="text-sm text-muted-foreground">{skill.category}</p>
-              </CardContent>
-            </Card>
+              <Card
+                className="text-center transition-all duration-300 ease-in-out
+                           hover:scale-105 hover:border-fireBlue
+                           hover:shadow-fireBlue hover:shadow-lg"
+              >
+                <CardHeader>
+                  <div className="mx-auto bg-primary text-primary-foreground rounded-full h-16 w-16 flex items-center justify-center">
+                    <skill.icon className="h-8 w-8" />
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <CardTitle className="text-lg">{skill.name}</CardTitle>
+                  <p className="text-sm text-muted-foreground">{skill.category}</p>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
