@@ -84,13 +84,17 @@
       "problem": "La logística y servicios no llegan bien a zonas desatendidas.",
       "solution": "App que conecta vecinos, comercio local y repartidores, con Maps/GPS y push.",
       "role": "Producto y full-stack (Flutter + Firebase + Maps + Push).",
-      "gtm": "Go-to-market local: radio, flyers y testers reales."
+      "gtm": "Go-to-market local: radio, flyers y testers reales.",
+      "status": "En Producción",
+      "technologies": ["Flutter", "Firebase", "Google Maps Platform", "FCM"]
     },
     "project2": {
       "title": "KDT (DAO para repartidores)",
       "what": "Plataforma/DAO con tokenomics para alinear incentivos de repartidores y clientes.",
       "role": "Diseño de gobernanza, stack dual (clientes/repartidores), métricas; exploración L2 para pagos/tokens.",
-      "goal": "Gobernanza real y sostenibilidad del ecosistema."
+      "goal": "Gobernanza real y sostenibilidad del ecosistema.",
+      "status": "Beta",
+      "technologies": ["Next.js", "Solidity", "Ethers.js", "Firebase"]
     }
   },
   "common": {

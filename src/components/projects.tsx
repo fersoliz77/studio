@@ -94,7 +94,14 @@ export function Projects() {
                   </CardHeader>
                   <CardContent className="flex-1 p-6 space-y-4">
                     <CardTitle className="text-xl">{projectData.title}</CardTitle>
-                    {/* Eliminar tags por ahora ya que no están en la nueva estructura */}
+                    {projectData.status && (
+                      <Badge variant="secondary" className="mr-2">{projectData.status}</Badge>
+                    )}
+                    <div className="flex flex-wrap gap-2 mt-2">
+                      {(projectData.technologies as string[])?.map((tech, techIndex) => (
+                        <Badge key={techIndex} variant="outline">{tech}</Badge>
+                      ))}
+                    </div>
                     <p className="text-muted-foreground whitespace-pre-line">{detailedDescription}</p>
                   </CardContent>
                   <CardFooter className="p-6 pt-0 flex gap-4">
