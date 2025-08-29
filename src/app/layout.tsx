@@ -19,7 +19,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const headersList = headers();
-  const lang = headersList.get('accept-language')?.split(',')[0] || 'en';
+  const lang = (await headersList).get('accept-language')?.split(',')[0] || 'en';
   const { i18n } = await useTranslation(lang, defaultNS);
 
   return (

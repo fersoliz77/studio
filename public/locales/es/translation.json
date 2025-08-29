@@ -159,5 +159,11 @@
   },
   "footer": {
     "copyright": "Todos los derechos reservados."
+  },
+  "toast": {
+    "languageChanged": {
+      "title": "Idioma Cambiado",
+      "description": "Idioma actualizado a {{lang}}."
+    }
   }
 }

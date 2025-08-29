@@ -21,7 +21,7 @@
     "title": "About",
     "description": "I build social-impact products connecting neighbors, local shops and couriers. I move between code, design and strategy to ship simple, useful, measurable solutions.",
     "howIWorkTitle": "How I work",
-    "howIWorkDescription": "Discovery → Prototype → MVP → Production, usability & metrics first.\nFuturistic yet professional visuals (animations/parallax) with accessibility and reduced motion support.\nBilingüe ES/EN; content and structure SEO-ready.",
+    "howIWorkDescription": "Discovery → Prototype → MVP → Production, usability & metrics first.\nFuturistic yet professional visuals (animations/parallax) with accessibility and reduced motion support.\nBilingüe ES/EN; content and structure SEO-ready.\n",
     "idealClientsTitle": "Ideal clients/sectors",
     "idealClientsList": [
       "Social-impact startups/SMBs, last-mile logistics, local retail, community/economy projects.",
@@ -159,5 +159,11 @@
   },
   "footer": {
     "copyright": "All rights reserved."
+  },
+  "toast": {
+    "languageChanged": {
+      "title": "Language Changed",
+      "description": "Language updated to {{lang}}."
+    }
   }
 }

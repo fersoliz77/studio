@@ -71,16 +71,6 @@ const allSkills: SkillItem[] = [
 export function Skills() {
   const { t } = useTranslation();
 
-  const skills: Skill[] = allSkills.map(skillItem => {
-    const translatedName = t(`skills.${skillItem.key}`);
-    return {
-      name: translatedName,
-      icon: skillItem.icon,
-      category: t(`skills.${skillItem.categoryKey}`),
-      color: skillItem.color,
-    };
-  });
-
   const softSkillsTitle = t('skills.softSkillsTitle');
   const softSkillsList = t('skills.softSkillsList', { returnObjects: true }) as string[];
 
@@ -137,9 +127,9 @@ export function Skills() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
         >
-          {skills.map((skill, index) => (
+          {allSkills.map((skillItem) => (
             <motion.div
-              key={skill.name}
+              key={skillItem.key} 
               variants={itemVariants}
             >
               <Card
@@ -149,12 +139,12 @@ export function Skills() {
               >
                 <CardHeader className="flex-shrink-0 pt-6 pb-2">
                   <div className="mx-auto bg-card rounded-full h-16 w-16 flex items-center justify-center border border-border"> 
-                    <skill.icon className="h-8 w-8" style={skill.color ? { color: skill.color } : {}} /> 
+                    <skillItem.icon className="h-8 w-8" style={skillItem.color ? { color: skillItem.color } : {}} /> 
                   </div>
                 </CardHeader>
                 <CardContent className="flex-grow flex flex-col justify-center items-center py-2 px-4"> 
-                  <CardTitle className="text-lg">{skill.name}</CardTitle>
-                  <p className="text-sm text-muted-foreground">{skill.category}</p>
+                  <CardTitle className="text-lg">{t(`skills.${skillItem.key}`)}</CardTitle>
+                  <p className="text-sm text-muted-foreground">{t(`skills.${skillItem.categoryKey}`)}</p>
                 </CardContent>
               </Card>
             </motion.div>
