@@ -1,9 +1,10 @@
 import Image from "next/image";
 import { Button } from "./ui/button";
-import { Download, Github, Linkedin } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { useTranslation } from 'react-i18next';
 import { motion } from "framer-motion";
+// Importar iconos de react-icons
+import { FaWhatsapp, FaDownload, FaGithub, FaLinkedinIn } from 'react-icons/fa';
 
 export function Hero() {
   const { t } = useTranslation();
@@ -30,6 +31,26 @@ export function Hero() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <motion.div
+            className="flex justify-center md:order-last" // Added md:order-last to place it last on medium and larger screens
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+          >
+            <div className="relative">
+                <div className="absolute -inset-2 bg-gradient-to-r from-primary to-accent rounded-full blur-xl opacity-50" />
+                <Image
+                  src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=1974&auto=format&fit=crop&ixlib-rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  alt="Jane Doe"
+                  width={400}
+                  height={400}
+                  className="rounded-full object-cover shadow-lg border-4 border-background relative"
+                  data-ai-hint="professional headshot of a woman"
+                  priority
+                />
+            </div>
+          </motion.div>
+          <motion.div
             className="space-y-6 text-center md:text-left"
             variants={containerVariants}
             initial="hidden"
@@ -55,12 +76,24 @@ export function Hero() {
               className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4"
               variants={itemVariants}
             >
-              <Button asChild size="lg" className="transition-transform duration-300 hover:scale-105">
-                <a href="#contact">{t('hero.contact')}</a>
+              <Button
+                asChild
+                size="lg"
+                className="transition-all duration-300 hover:scale-105 hover:shadow-fireBlue hover:shadow-lg"
+              >
+                <a href="https://wa.me/5491160390824" target="_blank" rel="noopener noreferrer">
+                  <FaWhatsapp className="mr-2 h-5 w-5" /> {/* WhatsApp icon from react-icons */}
+                  {t('hero.contact')}
+                </a>
               </Button>
-              <Button asChild variant="outline" size="lg" className="transition-transform duration-300 hover:scale-105">
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="transition-all duration-300 hover:scale-105 hover:border-fireBlue hover:shadow-fireBlue hover:shadow-lg"
+              >
                 <a href="/resume.pdf" download>
-                  <Download className="mr-2 h-5 w-5" />
+                  <FaDownload className="mr-2 h-5 w-5" />
                   {t('hero.download')}
                 </a>
               </Button>
@@ -70,32 +103,12 @@ export function Hero() {
               variants={itemVariants}
             >
               <a href="#" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                <Github className="h-8 w-8" />
+                <FaGithub className="h-8 w-8" />
               </a>
               <a href="#" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
-                <Linkedin className="h-8 w-8" />
+                <FaLinkedinIn className="h-8 w-8" />
               </a>
             </motion.div>
-          </motion.div>
-          <motion.div
-            className="flex justify-center"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-          >
-            <div className="relative">
-                <div className="absolute -inset-2 bg-gradient-to-r from-primary to-accent rounded-full blur-xl opacity-50" />
-                <Image
-                  src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=1974&auto=format&fit=crop&ixlib-rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  alt="Jane Doe"
-                  width={400}
-                  height={400}
-                  className="rounded-full object-cover shadow-lg border-4 border-background relative"
-                  data-ai-hint="professional headshot of a woman"
-                  priority
-                />
-            </div>
           </motion.div>
         </div>
       </div>

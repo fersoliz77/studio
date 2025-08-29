@@ -2,9 +2,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+// Eliminadas las importaciones de lucide-react
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
+// Importar iconos de react-icons
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
 
 export function Contact() {
   const { t } = useTranslation();
@@ -47,7 +49,7 @@ export function Contact() {
           <div className="space-y-8">
             <motion.div className="flex items-center gap-4" variants={itemVariants}>
               <div className="bg-primary text-primary-foreground rounded-full h-12 w-12 flex items-center justify-center">
-                <Mail className="h-6 w-6" />
+                <FaEnvelope className="h-6 w-6" />
               </div>
               <div>
                 <h3 className="text-lg font-semibold">{t('contact.email')}</h3>
@@ -58,7 +60,7 @@ export function Contact() {
             </motion.div>
             <motion.div className="flex items-center gap-4" variants={itemVariants}>
               <div className="bg-primary text-primary-foreground rounded-full h-12 w-12 flex items-center justify-center">
-                <Phone className="h-6 w-6" />
+                <FaPhone className="h-6 w-6" />
               </div>
               <div>
                 <h3 className="text-lg font-semibold">{t('contact.phone')}</h3>
@@ -67,7 +69,7 @@ export function Contact() {
             </motion.div>
             <motion.div className="flex items-center gap-4" variants={itemVariants}>
               <div className="bg-primary text-primary-foreground rounded-full h-12 w-12 flex items-center justify-center">
-                <MapPin className="h-6 w-6" />
+                <FaMapMarkerAlt className="h-6 w-6" />
               </div>
               <div>
                 <h3 className="text-lg font-semibold">{t('contact.location')}</h3>
@@ -87,7 +89,7 @@ export function Contact() {
                   <Input type="email" placeholder={t('contact.emailPlaceholder')} />
                   <Textarea placeholder={t('contact.messagePlaceholder')} rows={5} />
                   <Button type="submit" size="lg" className="w-full md:w-auto transition-transform duration-300 hover:scale-105">
-                    <Send className="mr-2 h-4 w-4" /> {t('contact.sendMessage')}
+                    <FaPaperPlane className="mr-2 h-4 w-4" /> {t('contact.sendMessage')}
                   </Button>
                 </form>
               </CardContent>

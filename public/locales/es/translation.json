@@ -3,7 +3,7 @@
     "badge": "Founder & Full-Stack (producto + desarrollo)",
     "name": "Fer Soliz",
     "description": "Construyo tecnología con impacto social. Llevo ideas a producción combinando Flutter, Firebase, React/Next.js, diseño centrado en la comunidad, y go-to-market local.",
-    "contact": "WhatsApp +54 9 11 6039-0824",
+    "contact": "WhatsApp",
     "download": "Descargar CV",
     "tagline": "Tecnología con impacto social — de idea a producción."
   },
@@ -102,7 +102,7 @@
   },
   "contact": {
     "title": "Ponte en Contacto",
-    "description": "Siempre estoy abierto a discutir nuevos proyectos, ideas creativas u oportunidades para ser parte de tus visiones. Mi WhatsApp: +54 9 11 6039-0824.",
+    "description": "Siempre estoy abierto a discutir nuevos proyectos, ideas creativas u oportunidades para ser parte de tus visiones. Puedes contactarme directamente o usar el formulario.",
     "email": "fernandomsoliz@gmail.com",
     "phone": "+54 9 11 6039-0824",
     "location": "Buenos Aires, Argentina",

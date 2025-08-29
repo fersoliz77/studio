@@ -2,12 +2,14 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
-import { Rocket, Menu } from "lucide-react";
+// Eliminadas las importaciones de lucide-react
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./theme-toggle";
 import { LanguageToggle } from "./language-toggle";
 import { useTranslation } from 'react-i18next';
+// Importar iconos de react-icons
+import { FaRocket, FaBars } from 'react-icons/fa';
 
 const navLinks = [
   { href: "#skills", label: "header.skills" },
@@ -57,7 +59,7 @@ export function Header() {
         <div className="flex items-center gap-2">
           <Button asChild className="hidden sm:flex transition-transform duration-300 hover:scale-105">
             <Link href="/summarize">
-              <Rocket className="mr-2 h-4 w-4" />
+              <FaRocket className="mr-2 h-4 w-4" /> {/* Icono de cohete de react-icons */}
               {t('header.aiAssistant')}
             </Link>
           </Button>
@@ -66,7 +68,7 @@ export function Header() {
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild className="md:hidden">
               <Button variant="outline" size="icon">
-                <Menu className="h-6 w-6" />
+                <FaBars className="h-6 w-6" /> {/* Icono de menú de react-icons */}
                 <span className="sr-only">Open navigation menu</span>
               </Button>
             </SheetTrigger>
@@ -79,7 +81,7 @@ export function Header() {
                 ))}
                 <Button asChild className="mt-4">
                   <Link href="/summarize" onClick={closeMobileMenu}>
-                    <Rocket className="mr-2 h-4 w-4" />
+                    <FaRocket className="mr-2 h-4 w-4" />
                     {t('header.aiAssistant')}
                   </Link>
                 </Button>
