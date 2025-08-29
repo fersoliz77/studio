@@ -1,1 +1,119 @@
-{\n  \"hero\": {\n    \"badge\": \"Diseñadora e Investigadora UX/UI\",\n    \"name\": \"Fer Soliz\",\n    \"description\": \"Me especializo en crear experiencias digitales intuitivas y atractivas que resuelven problemas del mundo real.\",\n    \"contact\": \"Contáctame\",\n    \"download\": \"Descargar CV\"\n  },\n  \"projects\": {\n    \"title\": \"Mi Trabajo\",\"description\": \"Una selección de mis proyectos de diseño UX/UI.\",\n    \"caseStudy\": \"Caso de Estudio\",\n    \"figmaFile\": \"Archivo de Figma\",\n    \"project1\": {\n      \"title\": \"Rediseño de Aplicación de Banca Móvil\",\n      \"description\": \"Un rediseño completo de una aplicación de banca móvil, centrado en mejorar el flujo de usuario y la accesibilidad.\",\n      \"tags\": [\"Diseño UX\", \"Diseño UI\", \"Figma\", \"Accesibilidad\"]\n    },\n    \"project2\": {\n      \"title\": \"Investigación UX de Plataforma de E-commerce\",\n      \"description\": \"Realicé una investigación de usuarios para identificar puntos débiles y oportunidades de mejora en una plataforma de e-commerce.\",\n      \"tags\": [\"Investigación UX\", \"Entrevistas a Usuarios\", \"Pruebas de Usabilidad\"]\n    },\n    \"project3\": {\n      \"title\": \"Sistema de Diseño de Dashboard SaaS\",\n      \"description\": \"Desarrollé un sistema de diseño completo para un dashboard SaaS para garantizar la consistencia y escalabilidad.\",\n      \"tags\": [\"Sistema de Diseño\", \"Componentes de UI\", \"Figma\"]\n    }\n  },\n  \"skills\": {\n    \"title\": \"Mi Experiencia en UX/UI\",\n    \"description\": \"Especializada en crear experiencias digitales intuitivas y centradas en el usuario.\",\n    \"userResearch\": \"Investigación de Usuarios\",\n    \"usabilityTesting\": \"Pruebas de Usabilidad\",\n    \"infoArchitecture\": \"Arquitectura de la Información\",\n    \"wireframing\": \"Wireframing\",\n    \"prototyping\": \"Prototipado\",\n    \"uiDesign\": \"Diseño de UI\",\n    \"designSystems\": \"Sistemas de Diseño\",\n    \"figma\": \"Figma\",\n    \"categories\": {\n      \"uxResearch\": \"Investigación UX\",\n      \"uxDesign\": \"Diseño UX\",\n      \"uiDesign\": \"Diseño UI\",\n      \"tools\": \"Herramientas\"\n    }\n  },\n  \"contact\": {\n    \"title\": \"Ponte en Contacto\",\n    \"description\": \"Siempre estoy abierta a discutir nuevos proyectos, ideas creativas u oportunidades para ser parte de tus visiones.\",\n    \"email\": \"Correo Electrónico\",\n    \"phone\": \"Teléfono\",\n    \"location\": \"Ubicación\",\n    \"formTitle\": \"Envíame un mensaje\",\n    \"formDescription\": \"Te responderé lo antes posible.\",\n    \"namePlaceholder\": \"Tu Nombre\",\n    \"emailPlaceholder\": \"Tu Correo Electrónico\",\n    \"messagePlaceholder\": \"Tu Mensaje\",\n    \"sendMessage\": \"Enviar Mensaje\"\n  },\n  \"header\": {\n    \"name\": \"Fer Soliz\",\n    \"skills\": \"Habilidades\",\n    \"work\": \"Trabajo\",\n    \"contact\": \"Contacto\",\n    \"aiAssistant\": \"Asistente IA\"\n  },\n  \"footer\": {\n    \"copyright\": \"Todos los derechos reservados.\"\n  }\n}\n
+{
+  "hero": {
+    "badge": "Founder & Full-Stack (producto + desarrollo)",
+    "name": "Fer Soliz",
+    "description": "Construyo tecnología con impacto social. Llevo ideas a producción combinando Flutter, Firebase, React/Next.js, diseño centrado en la comunidad, y go-to-market local.",
+    "contact": "WhatsApp +54 9 11 6039-0824",
+    "download": "Descargar CV",
+    "tagline": "Tecnología con impacto social — de idea a producción."
+  },
+  "header": {
+    "name": "Fer Soliz",
+    "skills": "Habilidades",
+    "work": "Proyectos",
+    "contact": "Contacto",
+    "aiAssistant": "Asistente IA"
+  },
+  "about": {
+    "title": "Sobre mí",
+    "description": "Soy Fer, de Buenos Aires. Creo productos con impacto social: conecto vecinos, comercio local y repartidores. Me muevo entre código, diseño y estrategia para lanzar soluciones simples, útiles y medibles.",
+    "howIWorkTitle": "Cómo trabajo",
+    "howIWorkDescription": "Discovery → Prototipo → MVP → Producción, con foco en usabilidad y métricas.\nDiseño “futurista” y profesional (animaciones y parallax), respetando accesibilidad y reduce motion.\nBilingüe ES/EN. Diseño y contenidos listos para SEO.",
+    "idealClientsTitle": "Clientes/sectores ideales",
+    "idealClientsList": [
+      "Startups y pymes con impacto social, logística/última milla, retail local, economía colaborativa.",
+      "Organizaciones que busquen MVP rápido con foco en adopción real."
+    ],
+    "servicesTitle": "Tipos de proyectos/servicios",
+    "servicesList": [
+      "Apps móviles (Flutter) y web apps (React/Next.js).",
+      "Sistemas con mapas, logística de última milla, notificaciones y auth.",
+      "Producto y UX/UI end-to-end, GTM local, i18n/SEO.",
+      "MVPs de DAO/tokenomics aplicadas a economía real."
+    ]
+  },
+  "skills": {
+    "title": "Habilidades clave",
+    "description": "Especializado en construir soluciones innovadoras y eficientes con impacto social.",
+    "frontend_mobile": "Frontend/Mobile",
+    "flutterDart": "Flutter/Dart",
+    "reactNext": "React/Next.js",
+    "tailwind": "Tailwind",
+    "motionFramer": "Motion/Framer",
+    "backend_cloud": "Backend/Cloud",
+    "firebase": "Firebase (Auth, Firestore, FCM)",
+    "stripePayments": "Integración de pagos/Stripe",
+    "authJwt": "Auth/JWT",
+    "product_ux": "Producto & UX",
+    "designSystems": "Design Systems",
+    "uxUi": "UX/UI",
+    "rapidPrototyping": "Prototipado rápido",
+    "i18n": "i18n",
+    "seo": "SEO",
+    "abTesting": "A/B testing",
+    "analytics": "Analytics",
+    "geo_realtime": "Geo & tiempo real",
+    "mapsGps": "Maps/GPS",
+    "geofencing": "Geofencing",
+    "pushNotifications": "Notificaciones push",
+    "devops": "DevOps",
+    "cicd": "CI/CD",
+    "vercel": "Vercel",
+    "githubActions": "GitHub Actions",
+    "pwa": "PWA",
+    "web3": "Web3 (en exploración aplicada)",
+    "daoTokenomics": "DAO / Tokenomics",
+    "levelsTitle": "Niveles declarados",
+    "levels": {
+      "flutter_dart": "Flutter/Dart 90",
+      "firebase": "Firebase 88",
+      "react_next": "Next.js/React 80",
+      "ux_ui_motion": "UX/UI & Motion 82",
+      "maps_gps": "Maps/GPS 84",
+      "dao_tokenomics": "DAO/Tokenomics 72"
+    }
+  },
+  "projects": {
+    "title": "Proyectos seleccionados",
+    "description": "Descubre mi trabajo en soluciones de impacto social.",
+    "caseStudy": "Más Detalles",
+    "figmaFile": "Código/Demo",
+    "project1": {
+      "title": "Bajo Flores",
+      "what": "Plataforma local de impacto social: remises, delivery y noticias del barrio.",
+      "problem": "La logística y servicios no llegan bien a zonas desatendidas.",
+      "solution": "App que conecta vecinos, comercio local y repartidores, con Maps/GPS y push.",
+      "role": "Producto y full-stack (Flutter + Firebase + Maps + Push).",
+      "gtm": "Go-to-market local: radio, flyers y testers reales."
+    },
+    "project2": {
+      "title": "KDT (DAO para repartidores)",
+      "what": "Plataforma/DAO con tokenomics para alinear incentivos de repartidores y clientes.",
+      "role": "Diseño de gobernanza, stack dual (clientes/repartidores), métricas; exploración L2 para pagos/tokens.",
+      "goal": "Gobernanza real y sostenibilidad del ecosistema."
+    }
+  },
+  "common": {
+    "problem": "Problema",
+    "solution": "Solución",
+    "role": "Rol",
+    "gtm": "Go-to-market",
+    "goal": "Objetivo"
+  },
+  "contact": {
+    "title": "Ponte en Contacto",
+    "description": "Siempre estoy abierto a discutir nuevos proyectos, ideas creativas u oportunidades para ser parte de tus visiones. Mi WhatsApp: +54 9 11 6039-0824.",
+    "email": "fernandomsoliz@gmail.com",
+    "phone": "+54 9 11 6039-0824",
+    "location": "Buenos Aires, Argentina",
+    "formTitle": "Envíame un mensaje",
+    "formDescription": "Te responderé lo antes posible.",
+    "namePlaceholder": "Tu Nombre",
+    "emailPlaceholder": "Tu Correo Electrónico",
+    "messagePlaceholder": "Tu Mensaje",
+    "sendMessage": "Enviar Mensaje"
+  },
+  "footer": {
+    "copyright": "Todos los derechos reservados."
+  }
+}

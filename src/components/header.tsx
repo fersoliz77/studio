@@ -19,11 +19,17 @@ export function Header() {
   const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+      const scrollY = window.scrollY;
+      const documentHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = (scrollY / documentHeight) * 100;
+      setScrollProgress(progress);
+      setIsScrolled(scrollY > 10);
     };
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -82,6 +88,11 @@ export function Header() {
           </Sheet>
         </div>
       </div>
+      {/* Scroll Progress Bar */}
+      <div
+        className="absolute bottom-0 left-0 h-1 bg-fireBlue transition-all duration-100 ease-out"
+        style={{ width: `${scrollProgress}%` }}
+      />
     </header>
   );
 }

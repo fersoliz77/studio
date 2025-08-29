@@ -1,5 +1,13 @@
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { Users, Brain, Palette, PenTool, ClipboardCheck, LayoutTemplate } from 'lucide-react';
+import {
+  Users, Brain, Palette, PenTool, ClipboardCheck, LayoutTemplate,
+  TabletSmartphone, Code, SwatchBook, Zap,
+  Cloud, CreditCard, Key,
+  Languages, Search, Split, BarChart,
+  MapPin, LocateFixed, Bell,
+  GitFork, Rocket, Github, LayoutPanelTop,
+  Network,
+} from 'lucide-react';
 import type { LucideIcon } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
@@ -9,40 +17,55 @@ interface Skill {
   category: string;
 }
 
-const skillIcons: { [key: string]: LucideIcon } = {
-  userResearch: Users,
-  usabilityTesting: ClipboardCheck,
-  infoArchitecture: Brain,
-  wireframing: LayoutTemplate,
-  prototyping: PenTool,
-  uiDesign: Palette,
-  designSystems: Palette,
-  figma: PenTool,
-};
+interface SkillItem {
+  key: string;
+  icon: LucideIcon;
+  categoryKey: string;
+}
+
+const allSkills: SkillItem[] = [
+  // Frontend/Mobile
+  { key: 'flutterDart', icon: TabletSmartphone, categoryKey: 'frontend_mobile' },
+  { key: 'reactNext', icon: Code, categoryKey: 'frontend_mobile' },
+  { key: 'tailwind', icon: SwatchBook, categoryKey: 'frontend_mobile' },
+  { key: 'motionFramer', icon: Zap, categoryKey: 'frontend_mobile' },
+
+  // Backend/Cloud
+  { key: 'firebase', icon: Cloud, categoryKey: 'backend_cloud' },
+  { key: 'stripePayments', icon: CreditCard, categoryKey: 'backend_cloud' },
+  { key: 'authJwt', icon: Key, categoryKey: 'backend_cloud' },
+
+  // Product & UX
+  { key: 'designSystems', icon: LayoutTemplate, categoryKey: 'product_ux' },
+  { key: 'uxUi', icon: Palette, categoryKey: 'product_ux' },
+  { key: 'rapidPrototyping', icon: PenTool, categoryKey: 'product_ux' },
+  { key: 'i18n', icon: Languages, categoryKey: 'product_ux' },
+  { key: 'seo', icon: Search, categoryKey: 'product_ux' },
+  { key: 'abTesting', icon: Split, categoryKey: 'product_ux' },
+  { key: 'analytics', icon: BarChart, categoryKey: 'product_ux' },
+
+  // Geo & Realtime
+  { key: 'mapsGps', icon: MapPin, categoryKey: 'geo_realtime' },
+  { key: 'geofencing', icon: LocateFixed, categoryKey: 'geo_realtime' },
+  { key: 'pushNotifications', icon: Bell, categoryKey: 'geo_realtime' },
+
+  // DevOps
+  { key: 'cicd', icon: GitFork, categoryKey: 'devops' },
+  { key: 'vercel', icon: Rocket, categoryKey: 'devops' },
+  { key: 'githubActions', icon: Github, categoryKey: 'devops' },
+  { key: 'pwa', icon: LayoutPanelTop, categoryKey: 'devops' },
+
+  // Web3
+  { key: 'daoTokenomics', icon: Network, categoryKey: 'web3' },
+];
 
 export function Skills() {
   const { t } = useTranslation();
 
-  const skillKeys = [
-    'userResearch', 'usabilityTesting', 'infoArchitecture', 'wireframing',
-    'prototyping', 'uiDesign', 'designSystems', 'figma'
-  ];
-
-  const categoryKeys: { [key: string]: string } = {
-    userResearch: 'uxResearch',
-    usabilityTesting: 'uxResearch',
-    infoArchitecture: 'uxDesign',
-    wireframing: 'uxDesign',
-    prototyping: 'uxDesign',
-    uiDesign: 'uiDesign',
-    designSystems: 'uiDesign',
-    figma: 'tools',
-  };
-
-  const skills: Skill[] = skillKeys.map(key => ({
-    name: t(`skills.${key}`),
-    icon: skillIcons[key],
-    category: t(`skills.categories.${categoryKeys[key]}`),
+  const skills: Skill[] = allSkills.map(skillItem => ({
+    name: t(`skills.${skillItem.key}`),
+    icon: skillItem.icon,
+    category: t(`skills.${skillItem.categoryKey}`),
   }));
 
   return (
@@ -54,7 +77,12 @@ export function Skills() {
         </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {skills.map((skill) => (
-            <Card key={skill.name} className="text-center transition-transform duration-300 hover:scale-105 hover:shadow-xl">
+            <Card
+              key={skill.name}
+              className="text-center transition-all duration-300 ease-in-out
+                         hover:scale-105 hover:border-fireBlue
+                         hover:shadow-fireBlue hover:shadow-lg"
+            >
               <CardHeader>
                 <div className="mx-auto bg-primary text-primary-foreground rounded-full h-16 w-16 flex items-center justify-center">
                   <skill.icon className="h-8 w-8" />
