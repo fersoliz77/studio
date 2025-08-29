@@ -20,17 +20,15 @@ export function useThemeToggle() {
   return context;
 }
 
-const animationDurationMs = 800; // Match CSS animation duration
-const themeChangeDelayMs = 150; // Short delay before next-themes changes the theme
+const animationDurationMs = 700; // Match CSS animation duration (0.7s)
 
-function AnimatedThemeProvider({ children, ...props }: CustomThemeProviderProps) {
+function AnimatedThemeProvider({ children }: CustomThemeProviderProps) {
   const { theme, setTheme, resolvedTheme } = useTheme();
-  const [transition, setTransition] = React.useState({
-    x: 0,
-    y: 0,
-    active: false,
-    targetTheme: 'light' as 'light' | 'dark',
-  });
+  const overlayRef = React.useRef<HTMLElement | null>(null);
+
+  React.useEffect(() => {
+    overlayRef.current = document.getElementById("theme-transition-overlay");
+  }, []);
 
   const toggleThemeWithEvent = (event: React.MouseEvent<HTMLButtonElement>) => {
     const newTheme = resolvedTheme === 'dark' ? 'light' : 'dark';
@@ -38,53 +36,60 @@ function AnimatedThemeProvider({ children, ...props }: CustomThemeProviderProps)
     const x = event.clientX;
     const y = event.clientY;
 
-    // Start the visual transition immediately with the new theme's color
-    setTransition({ x, y, active: true, targetTheme: newTheme });
-    
-    // Change the actual theme state after the animation has started visually
-    setTimeout(() => {
-        setTheme(newTheme);
-    }, themeChangeDelayMs);
+    if (overlayRef.current) {
+      overlayRef.current.style.setProperty('--theme-transition-start-x', `${x}px`);
+      overlayRef.current.style.setProperty('--theme-transition-start-y', `${y}px`);
 
-    // Deactivate the transition div after the animation completes
-    setTimeout(() => {
-        setTransition(prev => ({...prev, active: false}));
-    }, animationDurationMs);
+      // Mejorar la obtención del color de fondo del nuevo tema
+      const htmlElement = document.documentElement;
+      const currentHtmlClass = htmlElement.className; // Guardar la clase actual del <html>
+
+      // Aplicar temporalmente la clase del nuevo tema para obtener el color
+      if (newTheme === 'dark') {
+        htmlElement.classList.add('dark');
+      } else {
+        htmlElement.classList.remove('dark');
+      }
+
+      const computedHtmlStyle = getComputedStyle(htmlElement);
+      const newThemeBackgroundColor = computedHtmlStyle.getPropertyValue('--background').trim();
+
+      // Restaurar la clase original del <html> inmediatamente
+      htmlElement.className = currentHtmlClass;
+
+      // 1. Establecer el color de fondo del overlay al color del *nuevo* tema
+      overlayRef.current.style.backgroundColor = `hsl(${newThemeBackgroundColor})`;
+      
+      // 2. En el siguiente frame de animación, activar el overlay.
+      //    El overlay con el nuevo color empieza a expandirse sobre el tema actual.
+      requestAnimationFrame(() => {
+        if (overlayRef.current) {
+          overlayRef.current.classList.add('active');
+        }
+      });
+
+      // 3. Cambiar el tema real de la página una vez que el overlay esté lo suficientemente grande.
+      //    Esto crea el efecto de "revelado".
+      setTimeout(() => {
+        setTheme(newTheme);
+      }, animationDurationMs / 2); // Cambiar el tema a mitad de la animación de expansión
+
+      // 4. Desactivar el div de transición después de que la animación se complete (revelando el nuevo tema)
+      setTimeout(() => {
+        if (overlayRef.current) {
+          overlayRef.current.classList.remove('active');
+          // Restablecer el color de fondo a transparente para evitar cualquier color residual
+          overlayRef.current.style.backgroundColor = 'transparent'; 
+        }
+      }, animationDurationMs); 
+    }
   };
   
   const themeToggleValue = { toggleThemeWithEvent };
 
-  // Hardcoded HSL values from globals.css for light and dark backgrounds
-  const lightBackgroundHsl = '0 0% 100%'; // --background in light theme
-  const darkBackgroundHsl = '222.2 84% 4.9%'; // --background in dark theme
-
-  const animationDivBackgroundColor = transition.targetTheme === 'dark'
-    ? `hsl(${darkBackgroundHsl})`
-    : `hsl(${lightBackgroundHsl})`;
-
   return (
     <ThemeToggleContext.Provider value={themeToggleValue}>
       {children}
-      {transition.active && (
-        <div 
-          className="fixed top-0 left-0 w-full h-full z-[-1] pointer-events-none"
-          style={{
-            clipPath: `circle(0% at ${transition.x}px ${transition.y}px)`,
-            backgroundColor: animationDivBackgroundColor,
-            animation: `reveal ${animationDurationMs}ms forwards ease-in-out`
-          }}
-        />
-      )}
-      <style jsx global>{`
-        @keyframes reveal {
-          from {
-            clip-path: circle(0% at ${transition.x}px ${transition.y}px);
-          }
-          to {
-            clip-path: circle(150% at ${transition.x}px ${transition.y}px);
-          }
-        }
-      `}</style>
     </ThemeToggleContext.Provider>
   )
 }

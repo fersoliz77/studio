@@ -24,6 +24,8 @@
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
     --radius: 0.5rem;
+    --theme-transition-start-x: 50%;
+    --theme-transition-start-y: 50%;
   }
 
   .dark {
@@ -62,7 +64,7 @@ body {
   background-color: hsl(var(--background));
   background-image: radial-gradient(circle at 1px 1px, hsl(var(--foreground) / 0.1) 1px, transparent 0);
   background-size: 2rem 2rem;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: color 0.3s ease; /* Solo mantenemos la transición de color */
 }
 
 .pointer {
@@ -98,4 +100,23 @@ body {
 
 .animate-appear {
   animation: appear 0.5s ease-out backwards;
+}
+
+#theme-transition-overlay {
+  opacity: 0; /* Oculto por defecto */
+  clip-path: circle(0% at var(--theme-transition-start-x) var(--theme-transition-start-y));
+}
+
+#theme-transition-overlay.active {
+  animation: theme-reveal-expand 0.7s ease-in-out forwards;
+  opacity: 1; /* Visible instantáneamente al activarse */
+}
+
+@keyframes theme-reveal-expand {
+  from {
+    clip-path: circle(0% at var(--theme-transition-start-x) var(--theme-transition-start-y));
+  }
+  to {
+    clip-path: circle(150% at var(--theme-transition-start-x) var(--theme-transition-start-y));
+  }
 }
