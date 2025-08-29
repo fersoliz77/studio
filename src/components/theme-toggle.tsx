@@ -1,22 +1,14 @@
 'use client';
-
-import * as React from 'react';
-import { Moon, Sun } from 'lucide-react';
-import { useTheme } from 'next-themes';
-import { motion, AnimatePresence } from 'framer-motion';
-
-import { Button } from '@/components/ui/button';
-import { useThemeToggle } from './theme-provider'; // Import the custom hook
+import { Button } from "./ui/button";
+import { Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+import { AnimatePresence, motion } from "framer-motion";
+import { useContext } from 'react';
+import { ThemeToggleContext } from './theme-provider';
 
 export function ThemeToggle() {
-  const { theme } = useTheme();
-  const { toggleThemeWithEvent } = useThemeToggle(); // Use our custom toggle function
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => setMounted(true), []);
-  
-  if (!mounted) {
-    return <Button variant="outline" size="icon" disabled={true} />;
-  }
+  const { setTheme, theme } = useTheme();
+  const { toggleThemeWithEvent } = useContext(ThemeToggleContext);
 
   return (
     <Button variant="outline" size="icon" onClick={toggleThemeWithEvent}>
@@ -27,6 +19,7 @@ export function ThemeToggle() {
           animate={{ y: 0, opacity: 1, rotate: 0 }}
           exit={{ y: 20, opacity: 0, rotate: 90 }}
           transition={{ duration: 0.3, ease: 'easeInOut' }}
+          className="h-full w-full flex items-center justify-center"
         >
           {theme === 'dark' ? (
             <Moon className="h-[1.2rem] w-[1.2rem]" />
