@@ -84,13 +84,17 @@
       "problem": "Logistics/services don’t properly reach underserved areas.",
       "solution": "App connecting neighbors, local shops and couriers with Maps/GPS and push.",
       "role": "Product + full-stack (Flutter + Firebase + Maps + Push).",
-      "gtm": "Local GTM: radio, flyers, real testers."
+      "gtm": "Local GTM: radio, flyers, real testers.",
+      "status": "In Production",
+      "technologies": ["Flutter", "Firebase", "Google Maps Platform", "FCM"]
     },
     "project2": {
       "title": "KDT (DAO for couriers)",
       "what": "DAO platform with tokenomics to align incentives among couriers and clients.",
       "role": "Governance design + dual app + metrics; L2 exploration for tokens/payments.",
-      "goal": "Real governance and sustainable ecosystem."
+      "goal": "Real governance and sustainable ecosystem.",
+      "status": "Beta",
+      "technologies": ["Next.js", "Solidity", "Ethers.js", "Firebase"]
     }
   },
   "common": {

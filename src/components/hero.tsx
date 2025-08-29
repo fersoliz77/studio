@@ -36,6 +36,7 @@ export function Hero() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.5 }}
+            whileHover={{ scale: 1.05, transition: { duration: 0.3 } }} // Efecto hover: escala al 105%
           >
             <div className="relative">
                 <div className="absolute -inset-2 bg-gradient-to-r from-primary to-accent rounded-full blur-xl opacity-50" />
