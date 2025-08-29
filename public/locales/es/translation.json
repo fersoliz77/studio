@@ -78,6 +78,7 @@
     "description": "Descubre mi trabajo en soluciones de impacto social.",
     "caseStudy": "Más Detalles",
     "figmaFile": "Código/Demo",
+    "timelineTitle": "Cronología del Proyecto",
     "project1": {
       "title": "Bajo Flores",
       "what": "Plataforma local de impacto social: remises, delivery y noticias del barrio.",
@@ -86,7 +87,13 @@
       "role": "Producto y full-stack (Flutter + Firebase + Maps + Push).",
       "gtm": "Go-to-market local: radio, flyers y testers reales.",
       "status": "En Producción",
-      "technologies": ["Flutter", "Firebase", "Google Maps Platform", "FCM"]
+      "technologies": ["Flutter", "Firebase", "Google Maps Platform", "FCM"],
+      "timeline_events": [
+        { "name": "Concepto y Descubrimiento", "percentage": 100 },
+        { "name": "Desarrollo de MVP", "percentage": 100 },
+        { "name": "Pruebas de Usuario e Iteración", "percentage": 90 },
+        { "name": "Despliegue y Monitoreo", "percentage": 80 }
+      ]
     },
     "project2": {
       "title": "KDT (DAO para repartidores)",
@@ -94,7 +101,13 @@
       "role": "Diseño de gobernanza, stack dual (clientes/repartidores), métricas; exploración L2 para pagos/tokens.",
       "goal": "Gobernanza real y sostenibilidad del ecosistema.",
       "status": "Beta",
-      "technologies": ["Next.js", "Solidity", "Ethers.js", "Firebase"]
+      "technologies": ["Next.js", "Solidity", "Ethers.js", "Firebase"],
+      "timeline_events": [
+        { "name": "Investigación y Whitepaper", "percentage": 100 },
+        { "name": "Desarrollo de Contratos Inteligentes", "percentage": 70 },
+        { "name": "Integración Frontend", "percentage": 60 },
+        { "name": "Lanzamiento Beta", "percentage": 30 }
+      ]
     }
   },
   "common": {

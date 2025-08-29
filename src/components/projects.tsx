@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
+import { Progress } from "./ui/progress"; // Importar Progress component
 import { ExternalLink, Github } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
@@ -12,6 +13,24 @@ const projectImages: { [key: string]: string } = {
   project1: "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   project2: "https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 };
+
+interface TimelineEvent {
+  name: string;
+  percentage: number;
+}
+
+interface ProjectData {
+  title: string;
+  status?: string;
+  technologies?: string[];
+  timeline_events?: TimelineEvent[];
+  what?: string;
+  problem?: string;
+  solution?: string;
+  role?: string;
+  gtm?: string;
+  goal?: string;
+}
 
 export function Projects() {
   const { t } = useTranslation();
@@ -52,24 +71,20 @@ export function Projects() {
           viewport={{ once: true, amount: 0.3 }}
         >
           {projectKeys.map((key, i) => {
-            const projectData = t(`projects.${key}`, { returnObjects: true }) as Record<string, string | string[]>;
+            const projectData = t(`projects.${key}`, { returnObjects: true }) as ProjectData;
             
             // Construir la descripción detallada del proyecto
             let detailedDescription = '';
             if (key === 'project1') { // Bajo Flores
-              detailedDescription = `**${t(`projects.${key}.what`)}**\n\n` +
-                                    `**${t(`common.problem`)}:** ${t(`projects.${key}.problem`)}\n
-` +
-                                    `**${t(`common.solution`)}:** ${t(`projects.${key}.solution`)}\n
-` +
-                                    `**${t(`common.role`)}:** ${t(`projects.${key}.role`)}\n
-` +
-                                    `**${t(`common.gtm`)}:** ${t(`projects.${key}.gtm`)}`;
+              detailedDescription = `**${projectData.what}**\n\n` +
+                                    `**${t(`common.problem`)}:** ${projectData.problem}\n\n` +
+                                    `**${t(`common.solution`)}:** ${projectData.solution}\n\n` +
+                                    `**${t(`common.role`)}:** ${projectData.role}\n\n` +
+                                    `**${t(`common.gtm`)}:** ${projectData.gtm}`;
             } else if (key === 'project2') { // KDT
-              detailedDescription = `**${t(`projects.${key}.what`)}**\n\n` +
-                                    `**${t(`common.role`)}:** ${t(`projects.${key}.role`)}\n
-` +
-                                    `**${t(`common.goal`)}:** ${t(`projects.${key}.goal`)}`;
+              detailedDescription = `**${projectData.what}**\n\n` +
+                                    `**${t(`common.role`)}:** ${projectData.role}\n\n` +
+                                    `**${t(`common.goal`)}:** ${projectData.goal}`;
             }
 
             return (
@@ -97,12 +112,30 @@ export function Projects() {
                     {projectData.status && (
                       <Badge variant="secondary" className="mr-2">{projectData.status}</Badge>
                     )}
-                    <div className="flex flex-wrap gap-2 mt-2">
+                    <div className="flex flex-wrap gap-2 mt-2 mb-4">
                       {(projectData.technologies as string[])?.map((tech, techIndex) => (
                         <Badge key={techIndex} variant="outline">{tech}</Badge>
                       ))}
                     </div>
-                    <p className="text-muted-foreground whitespace-pre-line">{detailedDescription}</p>
+                    <p className="text-muted-foreground whitespace-pre-line mb-4">{detailedDescription}</p>
+
+                    {projectData.timeline_events && projectData.timeline_events.length > 0 && (
+                      <div className="timeline-section mt-4">
+                        <h4 className="text-lg font-semibold mb-2">{t('projects.timelineTitle')}</h4>
+                        <div className="space-y-4">
+                          {projectData.timeline_events.map((event, eventIndex) => (
+                            <div key={eventIndex} className="flex items-center space-x-2">
+                              <div className="w-1/3 text-sm text-muted-foreground">
+                                {event.name}
+                              </div>
+                              <div className="w-2/3">
+                                <Progress value={event.percentage} className="w-full" />
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </CardContent>
                   <CardFooter className="p-6 pt-0 flex gap-4">
                     {/* Mantener botones de ejemplo, puedes adaptarlos con URLs reales de tus proyectos */}
