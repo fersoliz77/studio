@@ -2,7 +2,8 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card"
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { Progress } from "./ui/progress";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink } from "lucide-react";
+import { FaAndroid } from 'react-icons/fa';
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 
@@ -24,7 +25,9 @@ interface ProjectData {
   role?: string;
   gtm?: string;
   goal?: string;
-  demoUrl?: string; // New: URL for the web viewer
+  demoUrl?: string;
+  webUrl?: string;
+  playStoreUrl?: string;
 }
 
 export function Projects() {
@@ -131,17 +134,20 @@ export function Projects() {
                     )}
                   </CardContent>
                   <CardFooter className="p-6 pt-0 flex gap-4">
-                    {/* Mantener botones de ejemplo, puedes adaptarlos con URLs reales de tus proyectos */}
-                    <Button asChild>
-                      <a href="#" target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="mr-2 h-4 w-4" /> {t('projects.caseStudy')}
-                      </a>
-                    </Button>
-                    <Button asChild variant="outline">
-                      <a href="#" target="_blank" rel="noopener noreferrer">
-                        <Github className="mr-2 h-4 w-4" /> {t('projects.figmaFile')}
-                      </a>
-                    </Button>
+                    {projectData.webUrl && (
+                      <Button asChild>
+                        <a href={projectData.webUrl} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="mr-2 h-4 w-4" /> {t('projects.webButton')}
+                        </a>
+                      </Button>
+                    )}
+                    {projectData.playStoreUrl && (
+                      <Button asChild variant="outline">
+                        <a href={projectData.playStoreUrl} target="_blank" rel="noopener noreferrer" className="android-button">
+                          <FaAndroid className="mr-2 h-4 w-4" /> {t('projects.playStoreButton')}
+                        </a>
+                      </Button>
+                    )}
                   </CardFooter>
                 </Card>
               </motion.div>

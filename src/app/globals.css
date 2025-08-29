@@ -120,3 +120,16 @@ body {
     clip-path: circle(150% at var(--theme-transition-start-x) var(--theme-transition-start-y));
   }
 }
+
+/* Estilos para el botón de Android */
+.android-button {
+  --android-green: #3DDC84;
+  transition: all 0.3s ease-in-out;
+}
+
+.android-button:hover {
+  background-color: var(--android-green) !important;
+  color: #1c1917 !important; /* Texto oscuro para contraste */
+  border-color: var(--android-green) !important;
+  box-shadow: 0 0 15px 3px var(--android-green);
+}

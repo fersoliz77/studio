@@ -121,7 +121,7 @@
         { "name": "User Testing & Iteration", "percentage": 90 },
         { "name": "Deployment & Monitoring", "percentage": 80 }
       ],
-      "demoUrl": "http://bajoflores.vercel.app" 
+      "demoUrl": "https://bajoflores.vercel.app"
     },
     "project2": {
       "title": "KDT (DAO for couriers)",
@@ -135,7 +135,8 @@
         { "name": "Smart Contract Development", "percentage": 70 },
         { "name": "Frontend Integration", "percentage": 60 },
         { "name": "Beta Launch", "percentage": 30 }
-      ]
+      ],
+      "demoUrl": "https://kdt.vercel.app"
     }
   },
   "common": {
