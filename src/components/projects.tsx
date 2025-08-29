@@ -1,18 +1,12 @@
-import Image from "next/image";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "./ui/card";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
-import { Progress } from "./ui/progress"; // Importar Progress component
+import { Progress } from "./ui/progress";
 import { ExternalLink, Github } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 
-const projectKeys = ["project1", "project2"]; // Actualizado para incluir solo tus dos proyectos
-
-const projectImages: { [key: string]: string } = {
-  project1: "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  project2: "https://images.unsplash.com/photo-1522204523234-8729aa6e3d5f?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-};
+const projectKeys = ["project1", "project2"];
 
 interface TimelineEvent {
   name: string;
@@ -30,6 +24,7 @@ interface ProjectData {
   role?: string;
   gtm?: string;
   goal?: string;
+  demoUrl?: string; // New: URL for the web viewer
 }
 
 export function Projects() {
@@ -70,18 +65,17 @@ export function Projects() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
-          {projectKeys.map((key, i) => {
+          {projectKeys.map((key) => {
             const projectData = t(`projects.${key}`, { returnObjects: true }) as ProjectData;
             
-            // Construir la descripción detallada del proyecto
             let detailedDescription = '';
-            if (key === 'project1') { // Bajo Flores
+            if (key === 'project1') {
               detailedDescription = `**${projectData.what}**\n\n` +
                                     `**${t(`common.problem`)}:** ${projectData.problem}\n\n` +
                                     `**${t(`common.solution`)}:** ${projectData.solution}\n\n` +
                                     `**${t(`common.role`)}:** ${projectData.role}\n\n` +
                                     `**${t(`common.gtm`)}:** ${projectData.gtm}`;
-            } else if (key === 'project2') { // KDT
+            } else if (key === 'project2') {
               detailedDescription = `**${projectData.what}**\n\n` +
                                     `**${t(`common.role`)}:** ${projectData.role}\n\n` +
                                     `**${t(`common.goal`)}:** ${projectData.goal}`;
@@ -95,16 +89,15 @@ export function Projects() {
                 <Card
                   className="flex flex-col overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-xl group animate-appear"
                 >
-                  <CardHeader className="p-0 relative">
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors z-10" />
-                    {projectImages[key] && (
-                      <Image
-                        src={projectImages[key]}
-                        alt={projectData.title as string}
-                        width={600}
-                        height={400}
-                        className="object-cover w-full h-48"
-                      />
+                  <CardHeader className="p-0 relative h-60 w-full">
+                    {projectData.demoUrl && (
+                      <iframe
+                        src={projectData.demoUrl}
+                        title={projectData.title as string}
+                        className="w-full h-full border-0"
+                        allowFullScreen
+                        sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+                      ></iframe>
                     )}
                   </CardHeader>
                   <CardContent className="flex-1 p-6 space-y-4">
