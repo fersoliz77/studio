@@ -1,7 +1,20 @@
+'use client';
+
+import { I18nextProvider } from 'react-i18next';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
+import { ThemeProvider } from '@/components/theme-provider';
+import { Toaster } from '@/components/ui/toaster';
+import { Pointer } from '@/components/pointer';
+
+interface I18nProviderClientProps {
+  children: React.ReactNode;
+  lang: string;
+}
 
 i18n
+  .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     fallbackLng: 'en',
@@ -109,7 +122,7 @@ i18n
               "tags": ["Investigación UX", "Entrevistas a Usuarios", "Pruebas de Usabilidad"]
             },
             "project3": {
-              "title": "Sistema de Diseño de Dashboard SaaS",
+              "title": "SaaS Dashboard Design System",
               "description": "Desarrollé un sistema de diseño completo para un dashboard SaaS para garantizar la consistencia y escalabilidad.",
               "tags": ["Sistema de Diseño", "Componentes de UI", "Figma"]
             }
@@ -160,4 +173,24 @@ i18n
     }
   });
 
-export default i18n;
+export function I18nProviderClient({ children, lang }: I18nProviderClientProps) {
+  // Set the language for i18n instance. This is crucial for consistency.
+  if (i18n.language !== lang) {
+    i18n.changeLanguage(lang);
+  }
+
+  return (
+    <I18nextProvider i18n={i18n}>
+      <ThemeProvider
+        attribute="class"
+        defaultTheme="system"
+        enableSystem
+        disableTransitionOnChange
+      >
+        {children}
+        <Toaster />
+        <Pointer />
+      </ThemeProvider>
+    </I18nextProvider>
+  );
+}

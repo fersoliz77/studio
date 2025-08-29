@@ -8,7 +8,6 @@ import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./theme-toggle";
 import { LanguageToggle } from "./language-toggle";
 import { useTranslation } from 'react-i18next';
-import '../i18n';
 
 const navLinks = [
   { href: "#skills", label: "header.skills" },

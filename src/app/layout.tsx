@@ -1,31 +1,23 @@
-'use client';
-
 import type { Metadata } from 'next';
 import { inter } from './fonts';
 import './globals.css';
-import { Toaster } from "@/components/ui/toaster";
-import { Pointer } from '@/components/pointer';
-import { ThemeProvider } from '@/components/theme-provider';
-import '../i18n'; // Import the i18n configuration
+import { I18nProviderClient } from '@/components/i18n-provider-client';
+import { headers } from 'next/headers';
 
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const headersList = headers();
+  const lang = headersList.get('accept-language')?.split(',')[0] || 'en';
+
   return (
-    <html lang="en" className="!scroll-smooth" suppressHydrationWarning>
+    <html lang={lang} className="!scroll-smooth" suppressHydrationWarning>
       <body className={`${inter.className} antialiased`}>
-        <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-        >
+        <I18nProviderClient lang={lang}>
             {children}
-            <Toaster />
-            <Pointer />
-        </ThemeProvider>
+        </I18nProviderClient>
       </body>
     </html>
   );
