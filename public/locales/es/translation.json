@@ -120,7 +120,8 @@
         { "name": "Desarrollo de MVP", "percentage": 100 },
         { "name": "Pruebas de Usuario e Iteración", "percentage": 90 },
         { "name": "Despliegue y Monitoreo", "percentage": 80 }
-      ]
+      ],
+      "demoUrl": "http://bajoflores.vercel.app" 
     },
     "project2": {
       "title": "KDT (DAO para repartidores)",
