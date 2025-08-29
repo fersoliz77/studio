@@ -2,10 +2,13 @@
   "hero": {
     "badge": "Founder & Full-Stack (product + engineering)",
     "name": "Fer Soliz",
-    "description": "I build technology with social impact. I ship ideas to production with Flutter, Firebase, React/Next.js, community-centric design, and local GTM.",
+    "description": "Social impact products, powered by AI: discovery, prototyping, development, and launch.",
+    "secondaryDescription": "End-to-end design and execution with real users, accessibility, and focus on measurable results.",
     "contact": "WhatsApp +54 9 11 6039-0824",
     "download": "Download CV",
-    "tagline": "Building technology with social impact — from idea to production."
+    "tagline": "Building technology with social impact — from idea to production.",
+    "tag1": "Bajo Flores",
+    "tag2": "KDT"
   },
   "header": {
     "name": "Fer Soliz",
@@ -36,12 +39,17 @@
     "title": "Core skills",
     "description": "Specialized in building innovative and efficient solutions with social impact.",
     "frontend_mobile": "Frontend/Mobile",
+    "html": "HTML",
+    "css": "CSS",
+    "javascript": "JavaScript",
     "flutterDart": "Flutter/Dart",
     "reactNext": "React/Next.js",
+    "angular": "Angular",
     "tailwind": "Tailwind",
     "motionFramer": "Motion/Framer",
     "backend_cloud": "Backend/Cloud",
     "firebase": "Firebase (Auth, Firestore, FCM)",
+    "python": "Python",
     "stripePayments": "Payments/Stripe",
     "authJwt": "Auth/JWT",
     "product_ux": "Product & UX",
@@ -61,13 +69,19 @@
     "vercel": "Vercel",
     "githubActions": "GitHub Actions",
     "pwa": "PWA",
+    "web3_category": "Web3",
     "web3": "Web3 (applied exploration)",
     "daoTokenomics": "DAO / Tokenomics",
     "levelsTitle": "Self-rated levels",
     "levels": {
+      "html": "HTML 90",
+      "css": "CSS 90",
+      "javascript": "JavaScript 90",
       "flutter_dart": "Flutter/Dart 90",
       "firebase": "Firebase 88",
       "react_next": "Next.js/React 80",
+      "angular": "Angular 75",
+      "python": "Python 80",
       "ux_ui_motion": "UX/UI & Motion 82",
       "maps_gps": "Maps/GPS 84",
       "dao_tokenomics": "DAO/Tokenomics 72"
@@ -82,7 +96,7 @@
       "Critical Thinking",
       "Creativity",
       "Time Management",
-      "Empathy",
+      "Empaty",
       "Proactiveness"
     ]
   },

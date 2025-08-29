@@ -4,7 +4,8 @@ import { Badge } from "./ui/badge";
 import { useTranslation } from 'react-i18next';
 import { motion } from "framer-motion";
 // Importar iconos de react-icons
-import { FaWhatsapp, FaDownload, FaGithub, FaLinkedinIn } from 'react-icons/fa';
+import { FaWhatsapp, FaDownload, FaGithub, FaLinkedinIn, FaHtml5, FaCss3Alt, FaJs } from 'react-icons/fa';
+import { SiAngular, SiPython } from 'react-icons/si';
 
 export function Hero() {
   const { t } = useTranslation();
@@ -73,6 +74,12 @@ export function Hero() {
             >
               {t('hero.description')}
             </motion.p>
+            <motion.p
+              className="text-sm text-muted-foreground mt-2"
+              variants={itemVariants}
+            >
+              {t('hero.secondaryDescription')}
+            </motion.p>
             <motion.div
               className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4"
               variants={itemVariants}
@@ -109,6 +116,13 @@ export function Hero() {
               <a href="#" target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
                 <FaLinkedinIn className="h-8 w-8" />
               </a>
+            </motion.div>
+            <motion.div
+              className="flex gap-2 justify-center md:justify-start pt-4"
+              variants={itemVariants}
+            >
+              <Badge variant="outline" className="text-xs px-2 py-1">{t('hero.tag1')}</Badge>
+              <Badge variant="outline" className="text-xs px-2 py-1">{t('hero.tag2')}</Badge>
             </motion.div>
           </motion.div>
         </div>

@@ -5,8 +5,8 @@ import React from 'react';
 import { Badge } from "./ui/badge"; // Import Badge for soft skills
 
 // Importar iconos de react-icons
-import { FaReact, FaGithub, FaCloud, FaMoneyBillWave, FaKey, FaChartBar, FaMapMarkerAlt, FaBell, FaGitAlt, FaRocket, FaLaptopCode, FaProjectDiagram, FaGlobe, FaSearch, FaPalette, FaToolbox, FaNetworkWired } from 'react-icons/fa';
-import { SiFlutter, SiNextdotjs, SiTailwindcss, SiFramer, SiFirebase, SiStripe, SiVercel, SiGithubactions, SiPwa } from 'react-icons/si';
+import { FaReact, FaGithub, FaCloud, FaMoneyBillWave, FaKey, FaChartBar, FaMapMarkerAlt, FaBell, FaGitAlt, FaRocket, FaLaptopCode, FaProjectDiagram, FaGlobe, FaSearch, FaPalette, FaToolbox, FaNetworkWired, FaHtml5, FaCss3Alt, FaJs, FaPython } from 'react-icons/fa';
+import { SiFlutter, SiNextdotjs, SiTailwindcss, SiFramer, SiFirebase, SiStripe, SiVercel, SiGithubactions, SiPwa, SiAngular } from 'react-icons/si';
 import { MdOutlineDesignServices, MdLanguage, MdGpsFixed, MdCompareArrows } from 'react-icons/md';
 import { DiDart } from 'react-icons/di';
 
@@ -28,13 +28,18 @@ const NEUTRAL_ICON_COLOR = '#607d8b'; // Un gris azulado para iconos genéricos
 
 const allSkills: SkillItem[] = [
   // Frontend/Mobile
+  { key: 'html', icon: FaHtml5, categoryKey: 'frontend_mobile', color: '#E34F26' }, // HTML5 Orange
+  { key: 'css', icon: FaCss3Alt, categoryKey: 'frontend_mobile', color: '#1572B6' }, // CSS3 Blue
+  { key: 'javascript', icon: FaJs, categoryKey: 'frontend_mobile', color: '#F7DF1E' }, // JavaScript Yellow
   { key: 'flutterDart', icon: SiFlutter, categoryKey: 'frontend_mobile', color: '#02569B' }, // Flutter Blue
   { key: 'reactNext', icon: SiNextdotjs, categoryKey: 'frontend_mobile', color: '#000000' }, // Next.js Black
+  { key: 'angular', icon: SiAngular, categoryKey: 'frontend_mobile', color: '#DD0031' }, // Angular Red
   { key: 'tailwind', icon: SiTailwindcss, categoryKey: 'frontend_mobile', color: '#06B6D4' }, // Tailwind Cyan
   { key: 'motionFramer', icon: SiFramer, categoryKey: 'frontend_mobile', color: '#0055FF' }, // Framer Blue
 
   // Backend/Cloud
   { key: 'firebase', icon: SiFirebase, categoryKey: 'backend_cloud', color: '#FFCA28' }, // Firebase Yellow
+  { key: 'python', icon: FaPython, categoryKey: 'backend_cloud', color: '#3776AB' }, // Python Blue
   { key: 'stripePayments', icon: SiStripe, categoryKey: 'backend_cloud', color: '#635BFF' }, // Stripe Violet
   { key: 'authJwt', icon: FaKey, categoryKey: 'backend_cloud', color: NEUTRAL_ICON_COLOR }, // Concepto, usar color neutro
 
@@ -59,18 +64,22 @@ const allSkills: SkillItem[] = [
   { key: 'pwa', icon: SiPwa, categoryKey: 'devops', color: NEUTRAL_ICON_COLOR },
 
   // Web3
-  { key: 'daoTokenomics', icon: FaNetworkWired, categoryKey: 'web3', color: NEUTRAL_ICON_COLOR },
+  { key: 'web3', icon: FaGlobe, categoryKey: 'web3_category', color: NEUTRAL_ICON_COLOR },
+  { key: 'daoTokenomics', icon: FaNetworkWired, categoryKey: 'web3_category', color: NEUTRAL_ICON_COLOR },
 ];
 
 export function Skills() {
   const { t } = useTranslation();
 
-  const skills: Skill[] = allSkills.map(skillItem => ({
-    name: t(`skills.${skillItem.key}`),
-    icon: skillItem.icon,
-    category: t(`skills.${skillItem.categoryKey}`),
-    color: skillItem.color,
-  }));
+  const skills: Skill[] = allSkills.map(skillItem => {
+    const translatedName = t(`skills.${skillItem.key}`);
+    return {
+      name: translatedName,
+      icon: skillItem.icon,
+      category: t(`skills.${skillItem.categoryKey}`),
+      color: skillItem.color,
+    };
+  });
 
   const softSkillsTitle = t('skills.softSkillsTitle');
   const softSkillsList = t('skills.softSkillsList', { returnObjects: true }) as string[];
@@ -128,7 +137,7 @@ export function Skills() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.5 }}
         >
-          {skills.map((skill) => (
+          {skills.map((skill, index) => (
             <motion.div
               key={skill.name}
               variants={itemVariants}

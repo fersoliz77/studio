@@ -5,7 +5,7 @@ export const ns = [defaultNS]; // Only 'translation' namespace is used currently
 
 export function getOptions(lang = fallbackLng, namespace = defaultNS) {
   return {
-    debug: false, // Set to true for debugging
+    debug: false, // Set to false for debugging
     supportedLngs: languages,
     fallbackLng,
     lng: lang,
