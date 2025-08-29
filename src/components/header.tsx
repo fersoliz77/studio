@@ -2,13 +2,11 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
-// Eliminadas las importaciones de lucide-react
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./theme-toggle";
 import { LanguageToggle } from "./language-toggle";
 import { useTranslation } from 'react-i18next';
-// Importar iconos de react-icons
 import { FaRocket, FaBars } from 'react-icons/fa';
 
 const navLinks = [
@@ -20,10 +18,16 @@ const navLinks = [
 export function Header() {
   const { t } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    // Delay setting isMounted to true to allow hero to load first
+    const timer = setTimeout(() => {
+      setIsMounted(true);
+    }, 800); // Adjust delay as needed, e.g., 800ms
+
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const documentHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
@@ -34,15 +38,17 @@ export function Header() {
 
     window.addEventListener("scroll", handleScroll);
     return () => {
+      clearTimeout(timer); // Clear the timeout if the component unmounts
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  const closeMobileMenu = () => setIsMobileMenuOpen(false);
+  const closeMobileMenu = () => setIsMobileMenuMenuOpen(false);
 
   return (
     <header className={cn(
-      "sticky top-0 z-50 w-full transition-all duration-300",
+      "fixed w-full z-50 transition-all duration-500 ease-out",
+      isMounted ? "top-0" : "-top-20",
       isScrolled ? "bg-background/80 backdrop-blur-sm shadow-md" : "bg-transparent"
     )}>
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
@@ -59,16 +65,16 @@ export function Header() {
         <div className="flex items-center gap-2">
           <Button asChild className="hidden sm:flex transition-transform duration-300 hover:scale-105">
             <Link href="/summarize">
-              <FaRocket className="mr-2 h-4 w-4" /> {/* Icono de cohete de react-icons */}
+              <FaRocket className="mr-2 h-4 w-4" />
               {t('header.aiAssistant')}
             </Link>
           </Button>
           <ThemeToggle />
           <LanguageToggle />
-          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuMenuOpen}>
             <SheetTrigger asChild className="md:hidden">
               <Button variant="outline" size="icon">
-                <FaBars className="h-6 w-6" /> {/* Icono de menú de react-icons */}
+                <FaBars className="h-6 w-6" />
                 <span className="sr-only">Open navigation menu</span>
               </Button>
             </SheetTrigger>
@@ -90,7 +96,6 @@ export function Header() {
           </Sheet>
         </div>
       </div>
-      {/* Scroll Progress Bar */}
       <div
         className="absolute bottom-0 left-0 h-1 bg-fireBlue transition-all duration-100 ease-out"
         style={{ width: `${scrollProgress}%` }}

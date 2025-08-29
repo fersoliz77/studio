@@ -71,7 +71,20 @@
       "ux_ui_motion": "UX/UI & Motion 82",
       "maps_gps": "Maps/GPS 84",
       "dao_tokenomics": "DAO/Tokenomics 72"
-    }
+    },
+    "softSkillsTitle": "Soft Skills",
+    "softSkillsList": [
+      "Problem-solving",
+      "Communication",
+      "Teamwork",
+      "Adaptability",
+      "Leadership",
+      "Critical Thinking",
+      "Creativity",
+      "Time Management",
+      "Empathy",
+      "Proactiveness"
+    ]
   },
   "projects": {
     "title": "Highlight projects",

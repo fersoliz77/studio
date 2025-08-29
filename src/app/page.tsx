@@ -2,11 +2,14 @@
 
 import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
-import { Skills } from "@/components/skills";
-import { Projects } from "@/components/projects";
-import { Contact } from "@/components/contact";
+import dynamic from 'next/dynamic'; // Import dynamic from next/dynamic
 import { useTranslation } from "react-i18next";
 import { motion, useScroll, useTransform } from "framer-motion";
+
+// Dynamically import components that are likely below the fold
+const Skills = dynamic(() => import("@/components/skills"), { ssr: false });
+const Projects = dynamic(() => import("@/components/projects").then(mod => mod.Projects), { ssr: false });
+const Contact = dynamic(() => import("@/components/contact"), { ssr: false });
 
 export default function Home() {
   const { t } = useTranslation();

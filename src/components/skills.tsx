@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import React from 'react';
+import { Badge } from "./ui/badge"; // Import Badge for soft skills
 
 // Importar iconos de react-icons
 import { FaReact, FaGithub, FaCloud, FaMoneyBillWave, FaKey, FaChartBar, FaMapMarkerAlt, FaBell, FaGitAlt, FaRocket, FaLaptopCode, FaProjectDiagram, FaGlobe, FaSearch, FaPalette, FaToolbox, FaNetworkWired } from 'react-icons/fa';
@@ -68,8 +69,14 @@ export function Skills() {
     name: t(`skills.${skillItem.key}`),
     icon: skillItem.icon,
     category: t(`skills.${skillItem.categoryKey}`),
-    color: skillItem.color, // Pasar el color al objeto skill
+    color: skillItem.color,
   }));
+
+  const softSkillsTitle = t('skills.softSkillsTitle');
+  const softSkillsList = t('skills.softSkillsList', { returnObjects: true }) as string[];
+
+  // Duplicate soft skills for continuous scrolling effect
+  const duplicatedSoftSkills = [...softSkillsList, ...softSkillsList];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -86,6 +93,21 @@ export function Skills() {
     visible: { opacity: 1, y: 0 }
   };
 
+  // Animation for the soft skills scroll banner
+  const scrollVariants = {
+    animate: {
+      x: ['0%', '-100%'], // Animate from 0% to -100% of its own width
+      transition: {
+        x: {
+          repeat: Infinity,
+          repeatType: 'loop',
+          duration: 30, // Adjust duration for desired speed
+          ease: 'linear',
+        },
+      },
+    },
+  };
+
   return (
     <section id="skills" className="py-20 md:py-28">
       <div className="container mx-auto px-4 md:px-6">
@@ -99,22 +121,19 @@ export function Skills() {
           <h2 className="text-3xl md:text-4xl font-bold font-headline">{t('skills.title')}</h2>
           <p className="text-lg text-muted-foreground mt-2">{t('skills.description')}</p>
         </motion.div>
-        <motion.div
+        <div // Changed from motion.div to div
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          // Removed variants, initial, whileInView, viewport props
         >
           {skills.map((skill) => (
-            <motion.div
+            <div // Changed from motion.div to div
               key={skill.name}
-              variants={itemVariants}
+              // Removed variants prop
             >
               <Card
                 className="text-center transition-all duration-300 ease-in-out
                            hover:scale-105 hover:border-fireBlue
-                           hover:shadow-fireBlue hover:shadow-lg flex flex-col"
+                           hover:shadow-fireBlue hover:shadow-lg flex flex-col min-h-[120px]"
               >
                 <CardHeader className="flex-shrink-0 pt-6 pb-2">
                   <div className="mx-auto bg-card rounded-full h-16 w-16 flex items-center justify-center border border-border"> 
@@ -126,9 +145,35 @@ export function Skills() {
                   <p className="text-sm text-muted-foreground">{skill.category}</p>
                 </CardContent>
               </Card>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
+
+        {/* Soft Skills Section */} 
+        {softSkillsList.length > 0 && (
+          <motion.div
+            className="mt-20 text-center"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.5 }}
+            variants={itemVariants}
+          >
+            <h3 className="text-2xl md:text-3xl font-bold font-headline mb-8">{softSkillsTitle}</h3>
+            <div className="relative w-full overflow-hidden py-4">
+              <motion.div
+                className="flex flex-nowrap gap-4 min-w-full"
+                variants={scrollVariants}
+                animate="animate"
+              >
+                {duplicatedSoftSkills.map((skill, index) => (
+                  <Badge key={index} variant="secondary" className="whitespace-nowrap px-6 py-3 text-lg rounded-full shadow-md hover:shadow-lg transition-shadow duration-300">
+                    {skill}
+                  </Badge>
+                ))}
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
       </div>
     </section>
   );
