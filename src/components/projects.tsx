@@ -28,11 +28,14 @@ export function Projects() {
             const project = {
               title: t(`projects.${key}.title`),
               description: t(`projects.${key}.description`),
-              tags: t(`projects.${key}.tags`, { returnObjects: true }) as string[],
+              tags: t(`projects.${key}.tags`, { returnObjects: true }),
               image: projectImages[key],
               liveUrl: "#",
               githubUrl: "#",
             };
+
+            console.log(`Project ${key} tags:`, project.tags, `Is Array: ${Array.isArray(project.tags)}`);
+
             return (
               <Card
                 key={project.title}
@@ -52,7 +55,7 @@ export function Projects() {
                 <CardContent className="flex-1 p-6 space-y-4">
                   <CardTitle className="text-xl">{project.title}</CardTitle>
                   <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
+                    {Array.isArray(project.tags) && project.tags.map((tag) => (
                       <Badge key={tag} variant="secondary">{tag}</Badge>
                     ))}
                   </div>

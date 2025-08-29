@@ -30,7 +30,7 @@ export default function Home() {
         </ScrollAnimation>
       </main>
       <footer className="py-6 text-center text-muted-foreground">
-        <p>&copy; {new Date().getFullYear()} Jane Doe. {t('footer.copyright')}</p>
+        <p>&copy; {new Date().getFullYear()} Fer Soliz. {t('footer.copyright')}</p>
       </footer>
     </div>
   );

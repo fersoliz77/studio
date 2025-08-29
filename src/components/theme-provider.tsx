@@ -8,7 +8,6 @@ interface CustomThemeProviderProps extends ThemeProviderProps {
   children: React.ReactNode;
 }
 
-// Create a context to share the toggle event
 const ThemeToggleContext = React.createContext<{
   toggleThemeWithEvent: (event: React.MouseEvent<HTMLButtonElement>) => void;
 } | undefined>(undefined);
@@ -21,46 +20,58 @@ export function useThemeToggle() {
   return context;
 }
 
+const animationDurationMs = 800; // Match CSS animation duration
+const themeChangeDelayMs = 150; // Short delay before next-themes changes the theme
+
 function AnimatedThemeProvider({ children, ...props }: CustomThemeProviderProps) {
-  const { setTheme, resolvedTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
   const [transition, setTransition] = React.useState({
     x: 0,
     y: 0,
     active: false,
+    targetTheme: 'light' as 'light' | 'dark',
   });
 
   const toggleThemeWithEvent = (event: React.MouseEvent<HTMLButtonElement>) => {
     const newTheme = resolvedTheme === 'dark' ? 'light' : 'dark';
     
-    // Get click coordinates
     const x = event.clientX;
     const y = event.clientY;
 
-    setTransition({ x, y, active: true });
+    // Start the visual transition immediately with the new theme's color
+    setTransition({ x, y, active: true, targetTheme: newTheme });
     
-    // Change theme after a short delay to allow the animation to start
+    // Change the actual theme state after the animation has started visually
     setTimeout(() => {
         setTheme(newTheme);
-    }, 50); // A small delay is enough
+    }, themeChangeDelayMs);
 
-    // Reset animation state after it completes
+    // Deactivate the transition div after the animation completes
     setTimeout(() => {
         setTransition(prev => ({...prev, active: false}));
-    }, 1200); // Should match animation duration
+    }, animationDurationMs);
   };
   
   const themeToggleValue = { toggleThemeWithEvent };
+
+  // Hardcoded HSL values from globals.css for light and dark backgrounds
+  const lightBackgroundHsl = '0 0% 100%'; // --background in light theme
+  const darkBackgroundHsl = '222.2 84% 4.9%'; // --background in dark theme
+
+  const animationDivBackgroundColor = transition.targetTheme === 'dark'
+    ? `hsl(${darkBackgroundHsl})`
+    : `hsl(${lightBackgroundHsl})`;
 
   return (
     <ThemeToggleContext.Provider value={themeToggleValue}>
       {children}
       {transition.active && (
         <div 
-          className="fixed top-0 left-0 w-full h-full z-[9999] pointer-events-none"
+          className="fixed top-0 left-0 w-full h-full z-[-1] pointer-events-none"
           style={{
             clipPath: `circle(0% at ${transition.x}px ${transition.y}px)`,
-            backgroundColor: resolvedTheme === 'dark' ? 'hsl(var(--background))' : 'hsl(var(--background))',
-            animation: 'reveal 1.2s forwards ease-in-out'
+            backgroundColor: animationDivBackgroundColor,
+            animation: `reveal ${animationDurationMs}ms forwards ease-in-out`
           }}
         />
       )}
@@ -77,7 +88,6 @@ function AnimatedThemeProvider({ children, ...props }: CustomThemeProviderProps)
     </ThemeToggleContext.Provider>
   )
 }
-
 
 export function ThemeProvider({ children, ...props }: CustomThemeProviderProps) {
   return (
