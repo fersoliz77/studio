@@ -121,14 +121,17 @@ export function Skills() {
           <h2 className="text-3xl md:text-4xl font-bold font-headline">{t('skills.title')}</h2>
           <p className="text-lg text-muted-foreground mt-2">{t('skills.description')}</p>
         </motion.div>
-        <div // Changed from motion.div to div
+        <motion.div
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
-          // Removed variants, initial, whileInView, viewport props
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.5 }}
         >
           {skills.map((skill) => (
-            <div // Changed from motion.div to div
+            <motion.div
               key={skill.name}
-              // Removed variants prop
+              variants={itemVariants}
             >
               <Card
                 className="text-center transition-all duration-300 ease-in-out
@@ -145,9 +148,9 @@ export function Skills() {
                   <p className="text-sm text-muted-foreground">{skill.category}</p>
                 </CardContent>
               </Card>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Soft Skills Section */} 
         {softSkillsList.length > 0 && (
