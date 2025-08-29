@@ -23,6 +23,7 @@ export function LanguageToggle() {
 
     // Show a toast notification about the language change
     toast({
+      variant: "languageChange", // Use the new variant
       title: i18n.t('toast.languageChanged.title'),
       description: i18n.t('toast.languageChanged.description', { lang: newLang.toUpperCase() }),
       duration: 3000,
