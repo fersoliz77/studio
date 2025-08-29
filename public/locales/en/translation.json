@@ -1,0 +1,71 @@
+{
+  "hero": {
+    "badge": "UX/UI Designer & Researcher",
+    "name": "Jane Doe",
+    "description": "I specialize in creating intuitive and engaging digital experiences that solve real-world problems.",
+    "contact": "Contact Me",
+    "download": "Download CV"
+  },
+  "projects": {
+    "title": "My Work",
+    "description": "A selection of my UX/UI design projects.",
+    "caseStudy": "Case Study",
+    "figmaFile": "Figma File",
+    "project1": {
+      "title": "Mobile Banking App Redesign",
+      "description": "A complete redesign of a mobile banking app, focusing on improving user flow and accessibility.",
+      "tags": ["UX Design", "UI Design", "Figma", "Accessibility"]
+    },
+    "project2": {
+      "title": "E-commerce Platform UX Research",
+      "description": "Conducted user research to identify pain points and opportunities for improvement in an e-commerce platform.",
+      "tags": ["UX Research", "User Interviews", "Usability Testing"]
+    },
+    "project3": {
+      "title": "SaaS Dashboard Design System",
+      "description": "Developed a comprehensive design system for a SaaS dashboard to ensure consistency and scalability.",
+      "tags": ["Design System", "UI Components", "Figma"]
+    }
+  },
+  "skills": {
+    "title": "My UX/UI Expertise",
+    "description": "Specializing in creating intuitive and user-centered digital experiences.",
+    "userResearch": "User Research",
+    "usabilityTesting": "Usability Testing",
+    "infoArchitecture": "Information Architecture",
+    "wireframing": "Wireframing",
+    "prototyping": "Prototyping",
+    "uiDesign": "UI Design",
+    "designSystems": "Design Systems",
+    "figma": "Figma",
+    "categories": {
+      "uxResearch": "UX Research",
+      "uxDesign": "UX Design",
+      "uiDesign": "UI Design",
+      "tools": "Tools"
+    }
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "description": "I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.",
+    "email": "Email",
+    "phone": "Phone",
+    "location": "Location",
+    "formTitle": "Send me a message",
+    "formDescription": "I'll get back to you as soon as possible.",
+    "namePlaceholder": "Your Name",
+    "emailPlaceholder": "Your Email",
+    "messagePlaceholder": "Your Message",
+    "sendMessage": "Send Message"
+  },
+  "header": {
+    "name": "Jane Doe",
+    "skills": "Skills",
+    "work": "Work",
+    "contact": "Contact",
+    "aiAssistant": "AI Assistant"
+  },
+  "footer": {
+    "copyright": "All rights reserved."
+  }
+}

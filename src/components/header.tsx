@@ -11,9 +11,9 @@ import { useTranslation } from 'react-i18next';
 import '../i18n';
 
 const navLinks = [
-  { href: "#skills", label: "skills" },
-  { href: "#projects", label: "work" },
-  { href: "#contact", label: "contact" },
+  { href: "#skills", label: "header.skills" },
+  { href: "#projects", label: "header.work" },
+  { href: "#contact", label: "header.contact" },
 ];
 
 export function Header() {
@@ -45,12 +45,12 @@ export function Header() {
     )}>
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link href="/" className="text-2xl font-bold text-primary font-headline">
-          Jane Doe
+          {isClient ? t('header.name') : 'Jane Doe'}
         </Link>
         <nav className="hidden md:flex items-center gap-8 text-lg font-medium">
           {navLinks.map(link => (
             <Link key={link.href} href={link.href} className="hover:text-primary transition-colors duration-300 relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">
-              {isClient ? t(link.label) : link.label.charAt(0).toUpperCase() + link.label.slice(1)}
+              {isClient ? t(link.label) : link.label.split('.')[1].charAt(0).toUpperCase() + link.label.split('.')[1].slice(1)}
             </Link>
           ))}
         </nav>
@@ -58,7 +58,7 @@ export function Header() {
           <Button asChild className="hidden sm:flex transition-transform duration-300 hover:scale-105">
             <Link href="/summarize">
               <Rocket className="mr-2 h-4 w-4" />
-              {isClient ? t('aiAssistant') : 'AI Assistant'}
+              {isClient ? t('header.aiAssistant') : 'AI Assistant'}
             </Link>
           </Button>
           <ThemeToggle />
@@ -74,13 +74,13 @@ export function Header() {
               <div className="flex flex-col gap-6 p-6 pt-12">
                 {navLinks.map(link => (
                   <Link key={link.href} href={link.href} className="text-2xl font-medium hover:text-primary transition-colors" onClick={closeMobileMenu}>
-                    {isClient ? t(link.label) : link.label.charAt(0).toUpperCase() + link.label.slice(1)}
+                    {isClient ? t(link.label) : link.label.split('.')[1].charAt(0).toUpperCase() + link.label.split('.')[1].slice(1)}
                   </Link>
                 ))}
                 <Button asChild className="mt-4">
                   <Link href="/summarize" onClick={closeMobileMenu}>
                     <Rocket className="mr-2 h-4 w-4" />
-                    {isClient ? t('aiAssistant') : 'AI Assistant'}
+                    {isClient ? t('header.aiAssistant') : 'AI Assistant'}
                   </Link>
                 </Button>
               </div>

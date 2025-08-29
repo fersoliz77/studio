@@ -1,0 +1,71 @@
+{
+  "hero": {
+    "badge": "Diseñadora e Investigadora UX/UI",
+    "name": "Jane Doe",
+    "description": "Me especializo en crear experiencias digitales intuitivas y atractivas que resuelven problemas del mundo real.",
+    "contact": "Contáctame",
+    "download": "Descargar CV"
+  },
+  "projects": {
+    "title": "Mi Trabajo",
+    "description": "Una selección de mis proyectos de diseño UX/UI.",
+    "caseStudy": "Caso de Estudio",
+    "figmaFile": "Archivo de Figma",
+    "project1": {
+      "title": "Rediseño de Aplicación de Banca Móvil",
+      "description": "Un rediseño completo de una aplicación de banca móvil, centrado en mejorar el flujo de usuario y la accesibilidad.",
+      "tags": ["Diseño UX", "Diseño UI", "Figma", "Accesibilidad"]
+    },
+    "project2": {
+      "title": "Investigación UX de Plataforma de E-commerce",
+      "description": "Realicé una investigación de usuarios para identificar puntos débiles y oportunidades de mejora en una plataforma de e-commerce.",
+      "tags": ["Investigación UX", "Entrevistas a Usuarios", "Pruebas de Usabilidad"]
+    },
+    "project3": {
+      "title": "Sistema de Diseño de Dashboard SaaS",
+      "description": "Desarrollé un sistema de diseño completo para un dashboard SaaS para garantizar la consistencia y escalabilidad.",
+      "tags": ["Sistema de Diseño", "Componentes de UI", "Figma"]
+    }
+  },
+  "skills": {
+    "title": "Mi Experiencia en UX/UI",
+    "description": "Especializada en crear experiencias digitales intuitivas y centradas en el usuario.",
+    "userResearch": "Investigación de Usuarios",
+    "usabilityTesting": "Pruebas de Usabilidad",
+    "infoArchitecture": "Arquitectura de la Información",
+    "wireframing": "Wireframing",
+    "prototyping": "Prototipado",
+    "uiDesign": "Diseño de UI",
+    "designSystems": "Sistemas de Diseño",
+    "figma": "Figma",
+    "categories": {
+      "uxResearch": "Investigación UX",
+      "uxDesign": "Diseño UX",
+      "uiDesign": "Diseño UI",
+      "tools": "Herramientas"
+    }
+  },
+  "contact": {
+    "title": "Ponte en Contacto",
+    "description": "Siempre estoy abierta a discutir nuevos proyectos, ideas creativas u oportunidades para ser parte de tus visiones.",
+    "email": "Correo Electrónico",
+    "phone": "Teléfono",
+    "location": "Ubicación",
+    "formTitle": "Envíame un mensaje",
+    "formDescription": "Te responderé lo antes posible.",
+    "namePlaceholder": "Tu Nombre",
+    "emailPlaceholder": "Tu Correo Electrónico",
+    "messagePlaceholder": "Tu Mensaje",
+    "sendMessage": "Enviar Mensaje"
+  },
+  "header": {
+    "name": "Jane Doe",
+    "skills": "Habilidades",
+    "work": "Trabajo",
+    "contact": "Contacto",
+    "aiAssistant": "Asistente IA"
+  },
+  "footer": {
+    "copyright": "Todos los derechos reservados."
+  }
+}

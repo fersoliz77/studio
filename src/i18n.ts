@@ -1,8 +1,10 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
+import Backend from 'i18next-http-backend';
 
 i18n
+  .use(Backend)
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
@@ -11,24 +13,9 @@ i18n
     interpolation: {
       escapeValue: false,
     },
-    resources: {
-      en: {
-        translation: {
-          skills: 'Skills',
-          work: 'Work',
-          contact: 'Contact',
-          aiAssistant: 'AI Assistant',
-        }
-      },
-      es: {
-        translation: {
-          skills: 'Habilidades',
-          work: 'Proyectos',
-          contact: 'Contacto',
-          aiAssistant: 'Asistente IA',
-        }
-      }
-    }
+    backend: {
+      loadPath: '/locales/{{lng}}/{{ns}}.json',
+    },
   });
 
 export default i18n;
