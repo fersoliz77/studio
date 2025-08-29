@@ -7,6 +7,12 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { useTranslation } from '@/i18n'; // Import the server-side useTranslation
 import { defaultNS } from '@/i18n/config'; // Import defaultNS
 
+export const metadata: Metadata = {
+  title: 'Portfolio',
+  description: 'A personal portfolio website.',
+  keywords: ['portfolio', 'web development', 'frontend', 'backend', 'react', 'next.js'],
+};
+
 export default async function RootLayout({
   children,
 }: Readonly<{

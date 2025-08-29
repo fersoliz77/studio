@@ -4,7 +4,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { generateProjectSummary } from '@/ai/flows/portfolio-project-summary';
+// Importar la acción del servidor en lugar del flujo de IA directamente
+import { summarizeProjectAction } from './actions';
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -38,7 +39,8 @@ export function SummaryForm() {
     setSummary('');
 
     try {
-      const result = await generateProjectSummary(values);
+      // Llamar a la acción del servidor
+      const result = await summarizeProjectAction(values);
       setSummary(result.summary);
     } catch (e) {
       console.error(e);

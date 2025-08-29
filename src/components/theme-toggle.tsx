@@ -1,13 +1,25 @@
 'use client';
+import { useEffect, useState } from 'react';
 import { Button } from "./ui/button";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { AnimatePresence, motion } from "framer-motion";
-import { useThemeToggle } from './theme-provider'; // Import useThemeToggle instead of ThemeToggleContext
+import { useThemeToggle } from './theme-provider';
 
 export function ThemeToggle() {
+  const [mounted, setMounted] = useState(false);
   const { setTheme, theme } = useTheme();
-  const { toggleThemeWithEvent } = useThemeToggle(); // Use the hook
+  const { toggleThemeWithEvent } = useThemeToggle();
+
+  // useEffect only runs on the client, so now we can safely show the UI
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    // Render a placeholder or null on the server and until mounted on the client
+    return <Button variant="outline" size="icon" disabled aria-label="Toggle theme"/>;
+  }
 
   return (
     <Button variant="outline" size="icon" onClick={toggleThemeWithEvent}>

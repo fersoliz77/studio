@@ -7,9 +7,9 @@ import { useTranslation } from "react-i18next";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 // Dynamically import components that are likely below the fold
-const Skills = dynamic(() => import("@/components/skills"), { ssr: false });
+const Skills = dynamic(() => import("@/components/skills").then(mod => mod.Skills), { ssr: false });
 const Projects = dynamic(() => import("@/components/projects").then(mod => mod.Projects), { ssr: false });
-const Contact = dynamic(() => import("@/components/contact"), { ssr: false });
+const Contact = dynamic(() => import("@/components/contact").then(mod => mod.Contact), { ssr: false });
 
 export default function Home() {
   const { t } = useTranslation();

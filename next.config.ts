@@ -1,4 +1,8 @@
-import type {NextConfig} from 'next';
+import type { NextConfig } from 'next';
+
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+});
 
 const nextConfig: NextConfig = {
   /* config options here */
@@ -30,6 +34,16 @@ const nextConfig: NextConfig = {
       }
     ],
   },
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.externals.push(
+        '@genkit-ai/googleai',
+        '@genkit-ai/next',
+        'genkit'
+      );
+    }
+    return config;
+  },
 };
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig);

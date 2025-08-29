@@ -41,7 +41,7 @@ export function Hero() {
             <div className="relative">
                 <div className="absolute -inset-2 bg-gradient-to-r from-primary to-accent rounded-full blur-xl opacity-50" />
                 <Image
-                  src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=1974&auto=format&fit=crop&ixlib-rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  src="/profile.jpg"
                   alt="Jane Doe"
                   width={400}
                   height={400}
