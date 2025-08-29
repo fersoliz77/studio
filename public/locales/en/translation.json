@@ -1,1 +1,119 @@
-{\n  \"hero\": {\n    \"badge\": \"Founder & Full-Stack (product + engineering)\",\n    \"name\": \"Fer Soliz\",\n    \"description\": \"I build technology with social impact. I ship ideas to production with Flutter, Firebase, React/Next.js, community-centric design, and local GTM.\",\n    \"contact\": \"WhatsApp +54 9 11 6039-0824\",\n    \"download\": \"Download CV\",\n    \"tagline\": \"Building technology with social impact — from idea to production.\"\n  },\n  \"header\": {\n    \"name\": \"Fer Soliz\",\n    \"skills\": \"Skills\",\n    \"work\": \"Projects\",\n    \"contact\": \"Contact\",\n    \"aiAssistant\": \"AI Assistant\"\n  },\n  \"about\": {\n    \"title\": \"About\",\n    \"description\": \"I build social-impact products connecting neighbors, local shops and couriers. I move between code, design and strategy to ship simple, useful, measurable solutions.\",\n    \"howIWorkTitle\": \"How I work\",\n    \"howIWorkDescription\": \"Discovery → Prototype → MVP → Production, usability & metrics first.\\nFuturistic yet professional visuals (animations/parallax) with accessibility and reduced motion support.\\nBilingual ES/EN; content and structure SEO-ready.\",\n    \"idealClientsTitle\": \"Ideal clients/sectors\",\n    \"idealClientsList\": [\n      \"Social-impact startups/SMBs, last-mile logistics, local retail, community/economy projects.\",\n      \"Teams needing a fast MVP aimed at real-world adoption.\"\n    ],\n    \"servicesTitle\": \"Types of projects/services\",\n    \"servicesList\": [\n      \"Mobile apps (Flutter) and web apps (React/Next.js).\",\n      \"Systems with maps, last-mile logistics, notifications and auth.\",\n      \"Product and UX/UI end-to-end, local GTM, i18n/SEO.\",\n      \"MVPs of DAO/tokenomics applied to real economy.\"\n    ]\n  },\n  \"skills\": {\n    \"title\": \"Core skills\",\n    \"description\": \"Specialized in building innovative and efficient solutions with social impact.\",\n    \"frontend_mobile\": \"Frontend/Mobile\",\n    \"flutterDart\": \"Flutter/Dart\",\n    \"reactNext\": \"React/Next.js\",\n    \"tailwind\": \"Tailwind\",\n    \"motionFramer\": \"Motion/Framer\",\n    \"backend_cloud\": \"Backend/Cloud\",\n    \"firebase\": \"Firebase (Auth, Firestore, FCM)\",\n    \"stripePayments\": \"Payments/Stripe\",\n    \"authJwt\": \"Auth/JWT\",\n    \"product_ux\": \"Product & UX\",\n    \"designSystems\": \"Design Systems\",\n    \"uxUi\": \"UX/UI\",\n    \"rapidPrototyping\": \"Rapid prototyping\",\n    \"i18n\": \"i18n\",\n    \"seo\": \"SEO\",\n    \"abTesting\": \"A/B testing\",\n    \"analytics\": \"Analytics\",\n    \"geo_realtime\": \"Geo & realtime\",\n    \"mapsGps\": \"Maps/GPS\",\n    \"geofencing\": \"Geofencing\",\n    \"pushNotifications\": \"Push notifications\",\n    \"devops\": \"DevOps\",\n    \"cicd\": \"CI/CD\",\n    \"vercel\": \"Vercel\",\n    \"githubActions\": \"GitHub Actions\",\n    \"pwa\": \"PWA\",\    \"web3\": \"Web3 (applied exploration)\",\n    \"daoTokenomics\": \"DAO / Tokenomics\",\n    \"levelsTitle\": \"Self-rated levels\",\n    \"levels\": {\n      \"flutter_dart\": \"Flutter/Dart 90\",\n      \"firebase\": \"Firebase 88\",\n      \"react_next\": \"Next.js/React 80\",\n      \"ux_ui_motion\": \"UX/UI & Motion 82\",\n      \"maps_gps\": \"Maps/GPS 84\",\n      \"dao_tokenomics\": \"DAO/Tokenomics 72\"\n    }\n  },\n  \"projects\": {\n    \"title\": \"Highlight projects\",\n    \"description\": \"Discover my work in social impact solutions.\",\n    \"caseStudy\": \"View Details\",\n    \"figmaFile\": \"Code/Demo\",\n    \"project1\": {\n      \"title\": \"Bajo Flores\",\n      \"what\": \"Local social-impact platform: ride hailing, delivery, neighborhood news.\",\n      \"problem\": \"Logistics/services don’t properly reach underserved areas.\",\n      \"solution\": \"App connecting neighbors, local shops and couriers with Maps/GPS and push.\",\n      \"role\": \"Product + full-stack (Flutter + Firebase + Maps + Push).\",\n      \"gtm\": \"Local GTM: radio, flyers, real testers.\"\n    },\n    \"project2\": {\n      \"title\": \"KDT (DAO for couriers)\",\n      \"what\": \"DAO platform with tokenomics to align incentives among couriers and clients.\",\n      \"role\": \"Governance design + dual app + metrics; L2 exploration for tokens/payments.\",\n      \"goal\": \"Real governance and sustainable ecosystem.\"\n    }\n  },\n  \"common\": {\n    \"problem\": \"Problem\",\n    \"solution\": \"Solution\",\n    \"role\": \"Role\",\n    \"gtm\": \"Go-to-market\",\n    \"goal\": \"Goal\"\n  },\n  \"contact\": {\n    \"title\": \"Get in Touch\",\n    \"description\": \"I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions. My WhatsApp: +54 9 11 6039-0824.\",\n    \"email\": \"fernandomsoliz@gmail.com\",\n    \"phone\": \"+54 9 11 6039-0824\",\n    \"location\": \"Buenos Aires, Argentina\",\n    \"formTitle\": \"Send me a message\",\n    \"formDescription\": \"I'll get back to you as soon as possible.\",\n    \"namePlaceholder\": \"Your Name\",\n    \"emailPlaceholder\": \"Your Email\",\n    \"messagePlaceholder\": \"Your Message\",\n    \"sendMessage\": \"Send Message\"\n  },\n  \"footer\": {\n    \"copyright\": \"All rights reserved.\"\n  }\n}
+{
+  "hero": {
+    "badge": "Founder & Full-Stack (product + engineering)",
+    "name": "Fer Soliz",
+    "description": "I build technology with social impact. I ship ideas to production with Flutter, Firebase, React/Next.js, community-centric design, and local GTM.",
+    "contact": "WhatsApp +54 9 11 6039-0824",
+    "download": "Download CV",
+    "tagline": "Building technology with social impact — from idea to production."
+  },
+  "header": {
+    "name": "Fer Soliz",
+    "skills": "Skills",
+    "work": "Projects",
+    "contact": "Contact",
+    "aiAssistant": "AI Assistant"
+  },
+  "about": {
+    "title": "About",
+    "description": "I build social-impact products connecting neighbors, local shops and couriers. I move between code, design and strategy to ship simple, useful, measurable solutions.",
+    "howIWorkTitle": "How I work",
+    "howIWorkDescription": "Discovery → Prototype → MVP → Production, usability & metrics first.\nFuturistic yet professional visuals (animations/parallax) with accessibility and reduced motion support.\nBilingual ES/EN; content and structure SEO-ready.",
+    "idealClientsTitle": "Ideal clients/sectors",
+    "idealClientsList": [
+      "Social-impact startups/SMBs, last-mile logistics, local retail, community/economy projects.",
+      "Teams needing a fast MVP aimed at real-world adoption."
+    ],
+    "servicesTitle": "Types of projects/services",
+    "servicesList": [
+      "Mobile apps (Flutter) and web apps (React/Next.js).",
+      "Systems with maps, last-mile logistics, notifications and auth.",
+      "Product and UX/UI end-to-end, local GTM, i18n/SEO.",
+      "MVPs of DAO/tokenomics applied to real economy."
+    ]
+  },
+  "skills": {
+    "title": "Core skills",
+    "description": "Specialized in building innovative and efficient solutions with social impact.",
+    "frontend_mobile": "Frontend/Mobile",
+    "flutterDart": "Flutter/Dart",
+    "reactNext": "React/Next.js",
+    "tailwind": "Tailwind",
+    "motionFramer": "Motion/Framer",
+    "backend_cloud": "Backend/Cloud",
+    "firebase": "Firebase (Auth, Firestore, FCM)",
+    "stripePayments": "Payments/Stripe",
+    "authJwt": "Auth/JWT",
+    "product_ux": "Product & UX",
+    "designSystems": "Design Systems",
+    "uxUi": "UX/UI",
+    "rapidPrototyping": "Rapid prototyping",
+    "i18n": "i18n",
+    "seo": "SEO",
+    "abTesting": "A/B testing",
+    "analytics": "Analytics",
+    "geo_realtime": "Geo & realtime",
+    "mapsGps": "Maps/GPS",
+    "geofencing": "Geofencing",
+    "pushNotifications": "Push notifications",
+    "devops": "DevOps",
+    "cicd": "CI/CD",
+    "vercel": "Vercel",
+    "githubActions": "GitHub Actions",
+    "pwa": "PWA",
+    "web3": "Web3 (applied exploration)",
+    "daoTokenomics": "DAO / Tokenomics",
+    "levelsTitle": "Self-rated levels",
+    "levels": {
+      "flutter_dart": "Flutter/Dart 90",
+      "firebase": "Firebase 88",
+      "react_next": "Next.js/React 80",
+      "ux_ui_motion": "UX/UI & Motion 82",
+      "maps_gps": "Maps/GPS 84",
+      "dao_tokenomics": "DAO/Tokenomics 72"
+    }
+  },
+  "projects": {
+    "title": "Highlight projects",
+    "description": "Discover my work in social impact solutions.",
+    "caseStudy": "View Details",
+    "figmaFile": "Code/Demo",
+    "project1": {
+      "title": "Bajo Flores",
+      "what": "Local social-impact platform: ride hailing, delivery, neighborhood news.",
+      "problem": "Logistics/services don’t properly reach underserved areas.",
+      "solution": "App connecting neighbors, local shops and couriers with Maps/GPS and push.",
+      "role": "Product + full-stack (Flutter + Firebase + Maps + Push).",
+      "gtm": "Local GTM: radio, flyers, real testers."
+    },
+    "project2": {
+      "title": "KDT (DAO for couriers)",
+      "what": "DAO platform with tokenomics to align incentives among couriers and clients.",
+      "role": "Governance design + dual app + metrics; L2 exploration for tokens/payments.",
+      "goal": "Real governance and sustainable ecosystem."
+    }
+  },
+  "common": {
+    "problem": "Problem",
+    "solution": "Solution",
+    "role": "Role",
+    "gtm": "Go-to-market",
+    "goal": "Goal"
+  },
+  "contact": {
+    "title": "Get in Touch",
+    "description": "I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions. My WhatsApp: +54 9 11 6039-0824.",
+    "email": "fernandomsoliz@gmail.com",
+    "phone": "+54 9 11 6039-0824",
+    "location": "Buenos Aires, Argentina",
+    "formTitle": "Send me a message",
+    "formDescription": "I'll get back to you as soon as possible.",
+    "namePlaceholder": "Your Name",
+    "emailPlaceholder": "Your Email",
+    "messagePlaceholder": "Your Message",
+    "sendMessage": "Send Message"
+  },
+  "footer": {
+    "copyright": "All rights reserved."
+  }
+}

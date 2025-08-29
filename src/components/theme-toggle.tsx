@@ -3,12 +3,11 @@ import { Button } from "./ui/button";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { AnimatePresence, motion } from "framer-motion";
-import { useContext } from 'react';
-import { ThemeToggleContext } from './theme-provider';
+import { useThemeToggle } from './theme-provider'; // Import useThemeToggle instead of ThemeToggleContext
 
 export function ThemeToggle() {
   const { setTheme, theme } = useTheme();
-  const { toggleThemeWithEvent } = useContext(ThemeToggleContext);
+  const { toggleThemeWithEvent } = useThemeToggle(); // Use the hook
 
   return (
     <Button variant="outline" size="icon" onClick={toggleThemeWithEvent}>
