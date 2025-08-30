@@ -181,5 +181,23 @@
       "title": "Language Changed",
       "description": "Language updated to {{lang}}."
     }
+  },
+  "summarizePage": {
+    "backButton": "Back to Portfolio",
+    "title": "AI Portfolio Summary Generator",
+    "description": "Generate a professional-sounding summary for your portfolio projects using AI."
+  },
+  "summaryForm": {
+    "title": "Project Details",
+    "description": "Enter your project's name and some keywords that describe it.",
+    "projectNameLabel": "Project Name",
+    "projectNamePlaceholder": "e.g., E-commerce App",
+    "keywordsLabel": "Keywords",
+    "keywordsPlaceholder": "e.g., React, Stripe, real-time, dashboard",
+    "generateButton": "Generate Summary",
+    "generatingButton": "Generating...",
+    "generatedSummaryTitle": "Generated Summary",
+    "loadingMessage": "Generating your professional summary...",
+    "error": "Failed to generate summary. Please try again."
   }
 }

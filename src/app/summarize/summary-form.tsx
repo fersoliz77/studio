@@ -4,6 +4,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
+import { useTranslation } from 'react-i18next';
+
 // Importar la acción del servidor en lugar del flujo de IA directamente
 import { summarizeProjectAction } from './actions';
 
@@ -20,6 +22,7 @@ const formSchema = z.object({
 });
 
 export function SummaryForm() {
+  const { t } = useTranslation();
   const [summary, setSummary] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
@@ -44,7 +47,7 @@ export function SummaryForm() {
       setSummary(result.summary);
     } catch (e) {
       console.error(e);
-      setError('Failed to generate summary. Please try again.');
+      setError(t('summaryForm.error'));
     } finally {
       setIsLoading(false);
     }
@@ -63,8 +66,8 @@ export function SummaryForm() {
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
           <CardHeader>
-            <CardTitle>Project Details</CardTitle>
-            <CardDescription>Enter your project's name and some keywords that describe it.</CardDescription>
+            <CardTitle>{t('summaryForm.title')}</CardTitle>
+            <CardDescription>{t('summaryForm.description')}</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <FormField
@@ -72,9 +75,9 @@ export function SummaryForm() {
               name="projectName"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Project Name</FormLabel>
+                  <FormLabel>{t('summaryForm.projectNameLabel')}</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g., E-commerce App" {...field} />
+                    <Input placeholder={t('summaryForm.projectNamePlaceholder')} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -85,9 +88,9 @@ export function SummaryForm() {
               name="keywords"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Keywords</FormLabel>
+                  <FormLabel>{t('summaryForm.keywordsLabel')}</FormLabel>
                   <FormControl>
-                    <Input placeholder="e.g., React, Stripe, real-time, dashboard" {...field} />
+                    <Input placeholder={t('summaryForm.keywordsPlaceholder')} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -102,12 +105,12 @@ export function SummaryForm() {
                     <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
                     <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                   </svg>
-                  Generating...
+                  {t('summaryForm.generatingButton')}
                 </>
               ) : (
                 <>
                   <Rocket className="mr-2 h-4 w-4" />
-                  Generate Summary
+                  {t('summaryForm.generateButton')}
                 </>
               )}
             </Button>
@@ -120,9 +123,9 @@ export function SummaryForm() {
           <div className="border-t pt-6">
             <h3 className="text-lg font-semibold flex items-center mb-2">
               <Sparkles className="mr-2 h-5 w-5 text-accent" />
-              Generated Summary
+              {t('summaryForm.generatedSummaryTitle')}
             </h3>
-            {isLoading && <p className="text-muted-foreground">Generating your professional summary...</p>}
+            {isLoading && <p className="text-muted-foreground">{t('summaryForm.loadingMessage')}</p>}
             {error && <p className="text-destructive">{error}</p>}
             {summary && (
               <div className="relative">
