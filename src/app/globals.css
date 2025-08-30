@@ -133,3 +133,28 @@ body {
   border-color: var(--android-green) !important;
   box-shadow: 0 0 15px 3px var(--android-green);
 }
+
+/* --- Estilos para el banner infinito --- */
+
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 0.5rem)); /* Mueve exactamente la mitad del contenedor */
+  }
+}
+
+.scroller {
+  overflow: hidden;
+  -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+  mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+.scroller-inner {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  animation: scroll var(--duration) linear infinite;
+}
+
+.scroller:hover .scroller-inner {
+  animation-play-state: paused;
+}

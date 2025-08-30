@@ -38,67 +38,81 @@
   "skills": {
     "title": "Habilidades clave",
     "description": "Especializado en construir soluciones innovadoras y eficientes con impacto social.",
-    "frontend_mobile": "Frontend/Mobile",
-    "html": "HTML",
-    "css": "CSS",
-    "javascript": "JavaScript",
-    "flutterDart": "Flutter/Dart",
-    "reactNext": "React/Next.js",
-    "angular": "Angular",
-    "tailwind": "Tailwind",
-    "motionFramer": "Motion/Framer",
-    "backend_cloud": "Backend/Cloud",
-    "firebase": "Firebase (Auth, Firestore, FCM)",
-    "python": "Python",
-    "stripePayments": "Integración de pagos/Stripe",
-    "authJwt": "Auth/JWT",
-    "product_ux": "Producto & UX",
-    "designSystems": "Design Systems",
-    "uxUi": "UX/UI",
-    "rapidPrototyping": "Prototipado rápido",
-    "i18n": "i18n",
-    "seo": "SEO",
-    "abTesting": "A/B testing",
-    "analytics": "Analytics",
-    "geo_realtime": "Geo & tiempo real",
-    "mapsGps": "Maps/GPS",
-    "geofencing": "Geofencing",
-    "pushNotifications": "Notificaciones push",
-    "devops": "DevOps",
-    "cicd": "CI/CD",
-    "vercel": "Vercel",
-    "githubActions": "GitHub Actions",
-    "pwa": "PWA",
-    "web3_category": "Web3",
-    "web3": "Web3 (en exploración aplicada)",
-    "daoTokenomics": "DAO / Tokenomics",
-    "levelsTitle": "Niveles declarados",
-    "levels": {
-      "html": "HTML 90",
-      "css": "CSS 90",
-      "javascript": "JavaScript 90",
-      "flutter_dart": "Flutter/Dart 90",
-      "firebase": "Firebase 88",
-      "react_next": "Next.js/React 80",
-      "angular": "Angular 75",
-      "python": "Python 80",
-      "ux_ui_motion": "UX/UI & Motion 82",
-      "maps_gps": "Maps/GPS 84",
-      "dao_tokenomics": "DAO/Tokenomics 72"
+    "categories": {
+      "frontend_mobile": {
+        "title": "Frontend y Móvil",
+        "items": [
+          { "name": "HTML", "level": 90 },
+          { "name": "CSS", "level": 90 },
+          { "name": "JavaScript", "level": 90 },
+          { "name": "Flutter/Dart", "level": 90 },
+          { "name": "React/Next.js", "level": 80 },
+          { "name": "Angular", "level": 75 },
+          { "name": "Tailwind", "level": 85 },
+          { "name": "Motion/Framer", "level": 82 }
+        ]
+      },
+      "backend_cloud": {
+        "title": "Backend y Cloud",
+        "items": [
+          { "name": "Firebase", "level": 88 },
+          { "name": "Python", "level": 80 },
+          { "name": "Integración de pagos", "level": 78 },
+          { "name": "Auth/JWT", "level": 85 }
+        ]
+      },
+      "product_ux": {
+        "title": "Producto y UX",
+        "items": [
+          { "name": "Design Systems", "level": 85 },
+          { "name": "UX/UI", "level": 82 },
+          { "name": "Prototipado rápido", "level": 90 },
+          { "name": "i18n", "level": 95 },
+          { "name": "SEO", "level": 88 },
+          { "name": "A/B testing", "level": 80 },
+          { "name": "Analytics", "level": 85 }
+        ]
+      },
+      "geo_realtime": {
+        "title": "Geo y Tiempo Real",
+        "items": [
+          { "name": "Maps/GPS", "level": 84 },
+          { "name": "Geofencing", "level": 80 },
+          { "name": "Notificaciones push", "level": 90 }
+        ]
+      },
+      "devops": {
+        "title": "DevOps",
+        "items": [
+          { "name": "CI/CD", "level": 80 },
+          { "name": "Vercel", "level": 90 },
+          { "name": "GitHub Actions", "level": 85 },
+          { "name": "PWA", "level": 88 }
+        ]
+      },
+      "web3": {
+        "title": "Web3",
+        "items": [
+          { "name": "Web3 (en exploración)", "level": 70 },
+          { "name": "DAO / Tokenomics", "level": 72 }
+        ]
+      }
     },
-    "softSkillsTitle": "Soft Skills",
-    "softSkillsList": [
-      "Resolución de Problemas",
-      "Comunicación Efectiva",
-      "Trabajo en Equipo",
-      "Adaptabilidad",
-      "Liderazgo",
-      "Pensamiento Crítico",
-      "Creatividad",
-      "Gestión del Tiempo",
-      "Empatía",
-      "Proactividad"
-    ]
+    "softSkills": {
+      "title": "Habilidades Blandas",
+      "items": [
+        "Resolución de Problemas",
+        "Comunicación Efectiva",
+        "Trabajo en Equipo",
+        "Adaptabilidad",
+        "Liderazgo",
+        "Pensamiento Crítico",
+        "Creatividad",
+        "Gestión del Tiempo",
+        "Empatía",
+        "Proactividad"
+      ]
+    }
   },
   "projects": {
     "title": "Proyectos seleccionados",
