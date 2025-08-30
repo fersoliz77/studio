@@ -1,4 +1,6 @@
 import { config } from 'dotenv';
 config();
 
-import '@/ai/flows/portfolio-project-summary.ts';
+// Do not import flows here.
+// This file is used for development purposes to configure Genkit.
+// Flows should be imported dynamically where they are used.
