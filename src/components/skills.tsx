@@ -1,50 +1,77 @@
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { Badge } from "./ui/badge";
+import { FaLaptopCode } from 'react-icons/fa';
 
-// Importar iconos de react-icons
-import { FaLaptopCode, FaHtml5, FaCss3Alt, FaJs, FaPython, FaKey, FaPalette, FaSearch, FaChartBar, FaMapMarkerAlt, FaBell, FaGitAlt, FaGlobe, FaNetworkWired } from 'react-icons/fa';
-import { SiFlutter, SiNextdotjs, SiTailwindcss, SiFramer, SiFirebase, SiStripe, SiVercel, SiGithubactions, SiPwa, SiAngular } from 'react-icons/si';
-import { MdOutlineDesignServices, MdLanguage, MdGpsFixed, MdCompareArrows } from 'react-icons/md';
+// Dynamic import for icons
+const iconImports: { [key: string]: () => Promise<{ [key: string]: React.ElementType }> } = {
+  'FaHtml5': () => import('react-icons/fa').then(module => ({ default: module.FaHtml5 })),
+  'FaCss3Alt': () => import('react-icons/fa').then(module => ({ default: module.FaCss3Alt })),
+  'FaJs': () => import('react-icons/fa').then(module => ({ default: module.FaJs })),
+  'SiFlutter': () => import('react-icons/si').then(module => ({ default: module.SiFlutter })),
+  'SiNextdotjs': () => import('react-icons/si').then(module => ({ default: module.SiNextdotjs })),
+  'SiAngular': () => import('react-icons/si').then(module => ({ default: module.SiAngular })),
+  'SiTailwindcss': () => import('react-icons/si').then(module => ({ default: module.SiTailwindcss })),
+  'SiFramer': () => import('react-icons/si').then(module => ({ default: module.SiFramer })),
+  'SiFirebase': () => import('react-icons/si').then(module => ({ default: module.SiFirebase })),
+  'FaPython': () => import('react-icons/fa').then(module => ({ default: module.FaPython })),
+  'SiStripe': () => import('react-icons/si').then(module => ({ default: module.SiStripe })),
+  'FaKey': () => import('react-icons/fa').then(module => ({ default: module.FaKey })),
+  'MdOutlineDesignServices': () => import('react-icons/md').then(module => ({ default: module.MdOutlineDesignServices })),
+  'FaPalette': () => import('react-icons/fa').then(module => ({ default: module.FaPalette })),
+  'MdLanguage': () => import('react-icons/md').then(module => ({ default: module.MdLanguage })),
+  'FaSearch': () => import('react-icons/fa').then(module => ({ default: module.FaSearch })),
+  'MdCompareArrows': () => import('react-icons/md').then(module => ({ default: module.MdCompareArrows })),
+  'FaChartBar': () => import('react-icons/fa').then(module => ({ default: module.FaChartBar })),
+  'FaMapMarkerAlt': () => import('react-icons/fa').then(module => ({ default: module.FaMapMarkerAlt })),
+  'MdGpsFixed': () => import('react-icons/md').then(module => ({ default: module.MdGpsFixed })),
+  'FaBell': () => import('react-icons/fa').then(module => ({ default: module.FaBell })),
+  'FaGitAlt': () => import('react-icons/fa').then(module => ({ default: module.FaGitAlt })),
+  'SiVercel': () => import('react-icons/si').then(module => ({ default: module.SiVercel })),
+  'SiGithubactions': () => import('react-icons/si').then(module => ({ default: module.SiGithubactions })),
+  'SiPwa': () => import('react-icons/si').then(module => ({ default: module.SiPwa })),
+  'FaGlobe': () => import('react-icons/fa').then(module => ({ default: module.FaGlobe })),
+  'FaNetworkWired': () => import('react-icons/fa').then(module => ({ default: module.FaNetworkWired })),
+};
+
+const iconComponentsMap: { [key: string]: React.LazyExoticComponent<React.ElementType> } = {
+  'HTML': lazy(iconImports.FaHtml5),
+  'CSS': lazy(iconImports.FaCss3Alt),
+  'JavaScript': lazy(iconImports.FaJs),
+  'Flutter/Dart': lazy(iconImports.SiFlutter),
+  'React/Next.js': lazy(iconImports.SiNextdotjs),
+  'Angular': lazy(iconImports.SiAngular),
+  'Tailwind': lazy(iconImports.SiTailwindcss),
+  'Motion/Framer': lazy(iconImports.SiFramer),
+  'Firebase (Auth, Firestore, FCM)': lazy(iconImports.SiFirebase),
+  'Python': lazy(iconImports.FaPython),
+  'Integración de pagos/Stripe': lazy(iconImports.SiStripe),
+  'Payments/Stripe': lazy(iconImports.SiStripe),
+  'Auth/JWT': lazy(iconImports.FaKey),
+  'Design Systems': lazy(iconImports.MdOutlineDesignServices),
+  'UX/UI': lazy(iconImports.FaPalette),
+  'Prototipado rápido': lazy(iconImports.MdOutlineDesignServices),
+  'Rapid prototyping': lazy(iconImports.MdOutlineDesignServices),
+  'i18n': lazy(iconImports.MdLanguage),
+  'SEO': lazy(iconImports.FaSearch),
+  'A/B testing': lazy(iconImports.MdCompareArrows),
+  'Analytics': lazy(iconImports.FaChartBar),
+  'Maps/GPS': lazy(iconImports.FaMapMarkerAlt),
+  'Geofencing': lazy(iconImports.MdGpsFixed),
+  'Notificaciones push': lazy(iconImports.FaBell),
+  'Push notifications': lazy(iconImports.FaBell),
+  'CI/CD': lazy(iconImports.FaGitAlt),
+  'Vercel': lazy(iconImports.SiVercel),
+  'GitHub Actions': lazy(iconImports.SiGithubactions),
+  'PWA': lazy(iconImports.SiPwa),
+  'Web3 (en exploración aplicada)': lazy(iconImports.FaGlobe),
+  'Web3 (applied exploration)': lazy(iconImports.FaGlobe),
+  'DAO / Tokenomics': lazy(iconImports.FaNetworkWired),
+};
 
 const NEUTRAL_ICON_COLOR = '#607d8b';
-
-const iconComponents: { [key: string]: React.ElementType } = {
-  'HTML': FaHtml5,
-  'CSS': FaCss3Alt,
-  'JavaScript': FaJs,
-  'Flutter/Dart': SiFlutter,
-  'React/Next.js': SiNextdotjs,
-  'Angular': SiAngular,
-  'Tailwind': SiTailwindcss,
-  'Motion/Framer': SiFramer,
-  'Firebase (Auth, Firestore, FCM)': SiFirebase,
-  'Python': FaPython,
-  'Integración de pagos/Stripe': SiStripe,
-  'Payments/Stripe': SiStripe,
-  'Auth/JWT': FaKey,
-  'Design Systems': MdOutlineDesignServices,
-  'UX/UI': FaPalette,
-  'Prototipado rápido': MdOutlineDesignServices, 
-  'Rapid prototyping': MdOutlineDesignServices,
-  'i18n': MdLanguage,
-  'SEO': FaSearch,
-  'A/B testing': MdCompareArrows,
-  'Analytics': FaChartBar,
-  'Maps/GPS': FaMapMarkerAlt,
-  'Geofencing': MdGpsFixed,
-  'Notificaciones push': FaBell,
-  'Push notifications': FaBell,
-  'CI/CD': FaGitAlt,
-  'Vercel': SiVercel,
-  'GitHub Actions': SiGithubactions,
-  'PWA': SiPwa,
-  'Web3 (en exploración aplicada)': FaGlobe,
-  'Web3 (applied exploration)': FaGlobe,
-  'DAO / Tokenomics': FaNetworkWired,
-};
 
 const iconColors: { [key: string]: string } = {
   'HTML': '#E34F26',
@@ -83,7 +110,7 @@ const ScrollingBanner = ({ children, duration }: { children: React.ReactNode, du
     <div className="scroller" style={{ "--duration": `${duration}s` } as React.CSSProperties}>
       <div className="scroller-inner">
         {children}
-        {children} 
+        {children}
       </div>
     </div>
   );
@@ -95,7 +122,7 @@ export function Skills() {
 
   const skillsCategories = t('skills.categories', { returnObjects: true }) as any;
   const softSkills = t('skills.softSkills', { returnObjects: true }) as any;
-  
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -110,7 +137,7 @@ export function Skills() {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 }
   };
-  
+
   return (
     <section id="skills" className="py-20 md:py-28">
       <div className="container mx-auto px-4 md:px-6">
@@ -127,7 +154,7 @@ export function Skills() {
 
         <div className="space-y-8">
           {skillsCategories && Object.values(skillsCategories).map((category: any, index: number) => {
-            const scrollDuration = category.items.length * 5; 
+            const scrollDuration = category.items.length * 5;
 
             return (
               <motion.div
@@ -144,7 +171,7 @@ export function Skills() {
                 <div className="w-full md:w-3/4">
                   <ScrollingBanner duration={scrollDuration}>
                     {category.items.map((skill: any, skillIndex: number) => {
-                      const IconComponent = iconComponents[skill.name] || FaLaptopCode;
+                      const IconComponent = iconComponentsMap[skill.name] || FaLaptopCode;
                       const iconColor = iconColors[skill.name] || NEUTRAL_ICON_COLOR;
 
                       return (
@@ -156,12 +183,14 @@ export function Skills() {
                         >
                           <CardHeader className="flex-shrink-0 pt-4 pb-1">
                             <div className="mx-auto bg-card rounded-full h-12 w-12 flex items-center justify-center border border-border">
-                              <IconComponent className="h-6 w-6" style={{ color: iconColor }} />
+                              <Suspense fallback={<div className="h-6 w-6" />}>
+                                <IconComponent className="h-6 w-6" style={{ color: iconColor }} />
+                              </Suspense>
                             </div>
                           </CardHeader>
                           <CardContent className="flex-grow flex flex-col justify-center items-center py-1 px-2">
                             <CardTitle className="text-sm font-medium leading-tight text-center">{skill.name}</CardTitle>
-                          </Content>
+                          </CardContent>
                         </Card>
                       );
                     })}
