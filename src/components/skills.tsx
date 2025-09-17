@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import { Badge } from "./ui/badge";
 import { FaLaptopCode } from 'react-icons/fa';
 
@@ -34,6 +34,17 @@ const iconImports: { [key: string]: () => Promise<{ [key: string]: React.Element
   'SiPwa': () => import('react-icons/si').then(module => ({ default: module.SiPwa })),
   'FaGlobe': () => import('react-icons/fa').then(module => ({ default: module.FaGlobe })),
   'FaNetworkWired': () => import('react-icons/fa').then(module => ({ default: module.FaNetworkWired })),
+  // Soft Skill Icons
+  'FaPuzzlePiece': () => import('react-icons/fa').then(module => ({ default: module.FaPuzzlePiece })),
+  'FaComments': () => import('react-icons/fa').then(module => ({ default: module.FaComments })),
+  'FaUsers': () => import('react-icons/fa').then(module => ({ default: module.FaUsers })),
+  'FaSyncAlt': () => import('react-icons/fa').then(module => ({ default: module.FaSyncAlt })),
+  'FaUserTie': () => import('react-icons/fa').then(module => ({ default: module.FaUserTie })),
+  'FaBrain': () => import('react-icons/fa').then(module => ({ default: module.FaBrain })),
+  'FaLightbulb': () => import('react-icons/fa').then(module => ({ default: module.FaLightbulb })),
+  'FaClock': () => import('react-icons/fa').then(module => ({ default: module.FaClock })),
+  'FaHeart': () => import('react-icons/fa').then(module => ({ default: module.FaHeart })),
+  'FaRocket': () => import('react-icons/fa').then(module => ({ default: module.FaRocket })),
 };
 
 const iconComponentsMap: { [key: string]: React.LazyExoticComponent<React.ElementType> } = {
@@ -71,6 +82,20 @@ const iconComponentsMap: { [key: string]: React.LazyExoticComponent<React.Elemen
   'DAO / Tokenomics': lazy(iconImports.FaNetworkWired),
 };
 
+const softSkillIconsMap: { [key: string]: React.LazyExoticComponent<React.ElementType> } = {
+  "problemSolving": lazy(iconImports.FaPuzzlePiece),
+  "communication": lazy(iconImports.FaComments),
+  "teamwork": lazy(iconImports.FaUsers),
+  "adaptability": lazy(iconImports.FaSyncAlt),
+  "leadership": lazy(iconImports.FaUserTie),
+  "criticalThinking": lazy(iconImports.FaBrain),
+  "creativity": lazy(iconImports.FaLightbulb),
+  "timeManagement": lazy(iconImports.FaClock),
+  "empathy": lazy(iconImports.FaHeart),
+  "proactivity": lazy(iconImports.FaRocket),
+};
+
+
 const NEUTRAL_ICON_COLOR = '#607d8b';
 
 const iconColors: { [key: string]: string } = {
@@ -91,6 +116,7 @@ const iconColors: { [key: string]: string } = {
   'GitHub Actions': '#2088FF',
 };
 
+
 const CategoryTitle = ({ title }: { title: string }) => {
   const parts = title.split('&').map(part => part.trim());
   return (
@@ -106,12 +132,37 @@ const CategoryTitle = ({ title }: { title: string }) => {
 };
 
 const ScrollingBanner = ({ children, duration }: { children: React.ReactNode, duration: number }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const marqueeVariants = {
+    animate: {
+      x: "-50.5%",
+      transition: {
+        x: {
+          repeat: Infinity,
+          repeatType: "loop",
+          duration: duration,
+          ease: "linear",
+        },
+      },
+    },
+  };
+
   return (
-    <div className="scroller" style={{ "--duration": `${duration}s` } as React.CSSProperties}>
-      <div className="scroller-inner">
+    <div 
+      className="scroller"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <motion.div
+        className="scroller-inner"
+        variants={marqueeVariants}
+        animate={isHovered ? "paused" : "animate"}
+        transition={{ type: 'spring', stiffness: 100 }}
+      >
         {children}
         {children}
-      </div>
+      </motion.div>
     </div>
   );
 };
@@ -177,12 +228,12 @@ export function Skills() {
                       return (
                         <Card
                           key={skillIndex}
-                          className="text-center transition-all duration-300 ease-in-out
-                                     hover:scale-105 hover:border-fireBlue
-                                     hover:shadow-fireBlue hover:shadow-lg flex flex-col min-w-[120px] max-w-[120px] h-[120px] justify-between p-2"
+                          className="text-center transition-all duration-300 ease-in-out border border-transparent
+                                     hover:-translate-y-2 hover:shadow-xl hover:shadow-fireBlue hover:border-fireBlue
+                                     flex flex-col min-w-[120px] max-w-[120px] h-[120px] justify-between p-2"
                         >
                           <CardHeader className="flex-shrink-0 pt-4 pb-1">
-                            <div className="mx-auto bg-card rounded-full h-12 w-12 flex items-center justify-center border border-border">
+                            <div className="mx-auto bg-card rounded-full h-12 w-12 flex items-center justify-center">
                               <Suspense fallback={<div className="h-6 w-6" />}>
                                 <IconComponent className="h-6 w-6" style={{ color: iconColor }} />
                               </Suspense>
@@ -211,11 +262,24 @@ export function Skills() {
           >
             <h3 className="text-2xl md:text-3xl font-bold font-headline mb-8">{softSkills.title}</h3>
             <ScrollingBanner duration={softSkills.items.length * 6}>
-                {softSkills.items.map((skill: string, index: number) => (
-                  <Badge key={index} variant="secondary" className="whitespace-nowrap px-6 py-3 text-lg rounded-full shadow-md hover:shadow-lg transition-shadow duration-300">
-                    {skill}
-                  </Badge>
-                ))}
+                {softSkills.items.map((skill: { key: string; name: string }, index: number) => {
+                  const IconComponent = softSkillIconsMap[skill.key];
+                  return (
+                    <Badge 
+                      key={index} 
+                      variant="secondary" 
+                      className="whitespace-nowrap px-6 py-3 text-lg rounded-full shadow-sm 
+                                 hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex items-center gap-2"
+                    >
+                      {IconComponent && (
+                        <Suspense fallback={<div className="h-4 w-4" />}>
+                          <IconComponent className="h-4 w-4" />
+                        </Suspense>
+                      )}
+                      {skill.name}
+                    </Badge>
+                  );
+                })}
             </ScrollingBanner>
           </motion.div>
         )}

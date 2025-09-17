@@ -101,16 +101,16 @@
     "softSkills": {
       "title": "Habilidades Blandas",
       "items": [
-        "Resolución de problemas",
-        "Comunicación",
-        "Trabajo en equipo",
-        "Adaptabilidad",
-        "Liderazgo",
-        "Pensamiento Crítico",
-        "Creatividad",
-        "Gestión del Tiempo",
-        "Empatía",
-        "Proactividad"
+        { "key": "problemSolving", "name": "Resolución de problemas" },
+        { "key": "communication", "name": "Comunicación" },
+        { "key": "teamwork", "name": "Trabajo en equipo" },
+        { "key": "adaptability", "name": "Adaptabilidad" },
+        { "key": "leadership", "name": "Liderazgo" },
+        { "key": "criticalThinking", "name": "Pensamiento Crítico" },
+        { "key": "creativity", "name": "Creatividad" },
+        { "key": "timeManagement", "name": "Gestión del Tiempo" },
+        { "key": "empathy", "name": "Empatía" },
+        { "key": "proactivity", "name": "Proactividad" }
       ]
     }
   },

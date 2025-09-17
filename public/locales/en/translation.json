@@ -101,16 +101,16 @@
     "softSkills": {
       "title": "Soft Skills",
       "items": [
-        "Problem-solving",
-        "Communication",
-        "Teamwork",
-        "Adaptability",
-        "Leadership",
-        "Critical Thinking",
-        "Creativity",
-        "Time Management",
-        "Empaty",
-        "Proactiveness"
+        { "key": "problemSolving", "name": "Problem-solving" },
+        { "key": "communication", "name": "Communication" },
+        { "key": "teamwork", "name": "Teamwork" },
+        { "key": "adaptability", "name": "Adaptability" },
+        { "key": "leadership", "name": "Leadership" },
+        { "key": "criticalThinking", "name": "Critical Thinking" },
+        { "key": "creativity", "name": "Creativity" },
+        { "key": "timeManagement", "name": "Time Management" },
+        { "key": "empathy", "name": "Empaty" },
+        { "key": "proactivity", "name": "Proactiveness" }
       ]
     }
   },
