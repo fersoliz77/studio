@@ -61,7 +61,7 @@ export function Hero() {
                 <div className="absolute -inset-2 bg-gradient-to-r from-primary to-accent rounded-full blur-xl opacity-50" />
                 <motion.div layoutId="profile-picture">
                   <Image
-                    src="/profile.jpg"
+                    src="/profile.jpeg"
                     alt="Fer Soliz"
                     width={400}
                     height={400}
