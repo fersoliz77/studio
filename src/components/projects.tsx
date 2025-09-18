@@ -30,6 +30,16 @@ interface ProjectData {
   playStoreUrl?: string;
 }
 
+const ProjectInfoRow = ({ label, value }: { label: string, value?: string }) => {
+  if (!value) return null;
+  return (
+    <div className="text-sm">
+      <span className="font-semibold text-foreground">{label}:</span>
+      <span className="text-muted-foreground ml-2">{value}</span>
+    </div>
+  );
+};
+
 export function Projects() {
   const { t } = useTranslation();
 
@@ -70,19 +80,6 @@ export function Projects() {
         >
           {projectKeys.map((key) => {
             const projectData = t(`projects.${key}`, { returnObjects: true }) as ProjectData;
-            
-            let detailedDescription = '';
-            if (key === 'project1') {
-              detailedDescription = `**${projectData.what}**\n\n` +
-                                    `**${t(`common.problem`)}:** ${projectData.problem}\n\n` +
-                                    `**${t(`common.solution`)}:** ${projectData.solution}\n\n` +
-                                    `**${t(`common.role`)}:** ${projectData.role}\n\n` +
-                                    `**${t(`common.gtm`)}:** ${projectData.gtm}`;
-            } else if (key === 'project2') {
-              detailedDescription = `**${projectData.what}**\n\n` +
-                                    `**${t(`common.role`)}:** ${projectData.role}\n\n` +
-                                    `**${t(`common.goal`)}:** ${projectData.goal}`;
-            }
 
             return (
               <motion.div
@@ -92,7 +89,7 @@ export function Projects() {
                 <Card
                   className="flex flex-col overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-xl group animate-appear"
                 >
-                  <CardHeader className="p-0 relative h-60 w-full">
+                  <CardHeader className="p-0 relative h-[37.5rem] w-full">
                     {projectData.demoUrl && (
                       <iframe
                         src={projectData.demoUrl}
@@ -108,16 +105,27 @@ export function Projects() {
                     {projectData.status && (
                       <Badge variant="secondary" className="mr-2">{projectData.status}</Badge>
                     )}
-                    <div className="flex flex-wrap gap-2 mt-2 mb-4">
+                    <div className="flex flex-wrap gap-2 mt-2">
                       {(projectData.technologies as string[])?.map((tech, techIndex) => (
                         <Badge key={techIndex} variant="outline">{tech}</Badge>
                       ))}
                     </div>
-                    <p className="text-muted-foreground whitespace-pre-line mb-4">{detailedDescription}</p>
+                    
+                    {/* Professional Description Section */}
+                    <div className="space-y-3 pt-2">
+                      {projectData.what && (
+                        <p className="text-base font-semibold text-foreground">{projectData.what}</p>
+                      )}
+                      <ProjectInfoRow label={t('common.problem')} value={projectData.problem} />
+                      <ProjectInfoRow label={t('common.solution')} value={projectData.solution} />
+                      <ProjectInfoRow label={t('common.role')} value={projectData.role} />
+                      <ProjectInfoRow label={t('common.gtm')} value={projectData.gtm} />
+                      <ProjectInfoRow label={t('common.goal')} value={projectData.goal} />
+                    </div>
 
                     {projectData.timeline_events && projectData.timeline_events.length > 0 && (
-                      <div className="timeline-section mt-4">
-                        <h4 className="text-lg font-semibold mb-2">{t('projects.timelineTitle')}</h4>
+                      <div className="timeline-section pt-2">
+                        <h4 className="text-lg font-semibold mb-3">{t('projects.timelineTitle')}</h4>
                         <div className="space-y-4">
                           {projectData.timeline_events.map((event, eventIndex) => (
                             <div key={eventIndex} className="flex items-center space-x-2">
