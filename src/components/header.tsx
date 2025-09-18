@@ -75,7 +75,7 @@ export function Header() {
                 transition={{ duration: 0.3, ease: 'easeOut' }}
               >
                 <Image
-                  src="/profile.jpeg"
+                  src="/profile.png"
                   alt="Fer Soliz"
                   width={40}
                   height={40}
