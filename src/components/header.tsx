@@ -1,13 +1,16 @@
 'use client';
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import { useState, useEffect } from "react";
 import { usePathname } from 'next/navigation';
+import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./theme-toggle";
 import { LanguageToggle } from "./language-toggle";
 import { useTranslation } from 'react-i18next';
+import { useScrollStore } from '@/store/scroll-store';
 import { FaRocket, FaBars } from 'react-icons/fa';
 
 const navItems = [
@@ -19,6 +22,8 @@ const navItems = [
 export function Header() {
   const { t } = useTranslation();
   const pathname = usePathname();
+  const { isHeroImageVisible } = useScrollStore();
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -50,6 +55,8 @@ export function Header() {
     return pathname === '/' ? `#${id}` : `/#${id}`;
   };
 
+  const showNavImage = isScrolled && !isHeroImageVisible;
+
   return (
     <header className={cn(
       "fixed w-full z-50 transition-all duration-500 ease-out",
@@ -57,9 +64,30 @@ export function Header() {
       isScrolled ? "bg-background/80 backdrop-blur-sm shadow-md" : "bg-transparent"
     )}>
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
-        <Link href="/" className="text-2xl font-bold text-primary font-headline">
-          {t('header.name')}
-        </Link>
+        <div className="flex items-center gap-4">
+          <AnimatePresence>
+            {showNavImage && (
+              <motion.div
+                layoutId="profile-picture"
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.5 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+              >
+                <Image
+                  src="/profile.jpg"
+                  alt="Fer Soliz"
+                  width={40}
+                  height={40}
+                  className="rounded-full object-cover border-2 border-primary/50"
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
+          <Link href="/" className="text-2xl font-bold text-primary font-headline">
+            {t('header.name')}
+          </Link>
+        </div>
         <nav className="hidden md:flex items-center gap-8 text-lg font-medium">
           {navItems.map(item => (
             <Link key={item.id} href={getLinkHref(item.id)} className="hover:text-primary transition-colors duration-300 relative after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-0.5 after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full">

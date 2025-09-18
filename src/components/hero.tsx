@@ -1,14 +1,33 @@
+'use client';
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
 import { useTranslation } from 'react-i18next';
 import { motion } from "framer-motion";
-// Importar iconos de react-icons
-import { FaWhatsapp, FaDownload, FaGithub, FaLinkedinIn, FaHtml5, FaCss3Alt, FaJs } from 'react-icons/fa';
-import { SiAngular, SiPython } from 'react-icons/si';
+import { useInView } from 'react-intersection-observer';
+import { useEffect, useRef } from 'react';
+import { useScrollStore } from '@/store/scroll-store';
+import { FaWhatsapp, FaDownload, FaGithub, FaLinkedinIn } from 'react-icons/fa';
 
 export function Hero() {
   const { t } = useTranslation();
+  const { setIsHeroImageVisible } = useScrollStore();
+
+  const ref = useRef(null);
+  const { ref: inViewRef, inView } = useInView({
+    threshold: 0.5, // Trigger when 50% of the image is visible
+  });
+
+  // Combine refs
+  const setRefs = (node: any) => {
+    ref.current = node;
+    inViewRef(node);
+  };
+
+  useEffect(() => {
+    setIsHeroImageVisible(inView);
+  }, [inView, setIsHeroImageVisible]);
+
 
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -32,24 +51,24 @@ export function Hero() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <motion.div
-            className="flex justify-center md:order-last" // Added md:order-last to place it last on medium and larger screens
+            ref={setRefs}
+            className="flex justify-center md:order-last"
             initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            whileHover={{ scale: 1.05, transition: { duration: 0.3 } }} // Efecto hover: escala al 105%
+            animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.8 }}
+            transition={{ duration: 0.4 }}
           >
             <div className="relative">
                 <div className="absolute -inset-2 bg-gradient-to-r from-primary to-accent rounded-full blur-xl opacity-50" />
-                <Image
-                  src="/profile.jpg"
-                  alt="Jane Doe"
-                  width={400}
-                  height={400}
-                  className="rounded-full object-cover shadow-lg border-4 border-background relative"
-                  data-ai-hint="professional headshot of a woman"
-                  priority
-                />
+                <motion.div layoutId="profile-picture">
+                  <Image
+                    src="/profile.jpg"
+                    alt="Fer Soliz"
+                    width={400}
+                    height={400}
+                    className="rounded-full object-cover shadow-lg border-4 border-background relative"
+                    priority
+                  />
+                </motion.div>
             </div>
           </motion.div>
           <motion.div
@@ -59,6 +78,7 @@ export function Hero() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
           >
+            {/* Rest of the hero content */}
             <motion.div variants={itemVariants}>
               <Badge variant="secondary">{t('hero.badge')}</Badge>
             </motion.div>
@@ -90,7 +110,7 @@ export function Hero() {
                 className="transition-all duration-300 hover:scale-105 hover:shadow-fireBlue hover:shadow-lg"
               >
                 <a href="https://wa.me/5491160390824" target="_blank" rel="noopener noreferrer">
-                  <FaWhatsapp className="mr-2 h-5 w-5" /> {/* WhatsApp icon from react-icons */}
+                  <FaWhatsapp className="mr-2 h-5 w-5" />
                   {t('hero.contact')}
                 </a>
               </Button>
