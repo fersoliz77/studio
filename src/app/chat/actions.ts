@@ -1,7 +1,8 @@
 // src/app/chat/actions.ts
 'use server';
 
-import { portfolioChatAssistantFlow, ChatAssistantInput, ChatAssistantOutput } from '@/ai/flows/portfolio-chat-assistant';
+import { generateText } from 'ai';
+import { google } from '@ai-sdk/google';
 import fs from 'fs/promises';
 import path from 'path';
 
@@ -95,18 +96,35 @@ async function getPortfolioContext(lang: string): Promise<string> {
   }
 }
 
+// Define the output structure for the chat action
+interface ChatOutput {
+  response: string;
+}
+
+
 export async function chatWithPortfolioAssistant(
   message: string,
   history: Array<{ role: 'user' | 'model'; content: string }>,
   lang: string
-): Promise<ChatAssistantOutput> {
+): Promise<ChatOutput> {
   const portfolioContext = await getPortfolioContext(lang);
 
-  const input: ChatAssistantInput = {
-    message,
-    history,
-    portfolioContext,
-  };
+  const systemInstruction = `You are a helpful and friendly AI assistant for a developer's online portfolio named Fer Soliz.
+    Your goal is to answer questions about Fer Soliz's projects, skills, experience, and general information based ONLY on the provided context.
+    Be concise, professional, and engaging.
+    If you don't know the answer based on the provided context, politely state that you don't have that information.
 
-  return portfolioChatAssistantFlow(input);
+    Here is the portfolio information you should use:
+    ${portfolioContext}
+    `;
+
+  const result = await generateText({
+    model: google('gemini-1.5-flash'),
+    system: systemInstruction,
+    messages: [...history.map(m => ({ role: m.role === 'model' ? 'assistant' : m.role, content: m.content})), { role: 'user', content: message }],
+  });
+
+  return {
+    response: result.text
+  };
 }
