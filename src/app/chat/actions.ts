@@ -9,7 +9,8 @@ import path from 'path';
 // Helper to read and format portfolio context
 async function getPortfolioContext(lang: string): Promise<string> {
   try {
-    const filePath = path.join(process.cwd(), 'public', 'locales', lang, 'translation.json');
+    // Corrected path to read from 'src/data' which is included in the server bundle
+    const filePath = path.join(process.cwd(), 'src', 'data', lang, 'translation.json');
     const fileContent = await fs.readFile(filePath, 'utf8');
     const data = JSON.parse(fileContent);
 
@@ -91,8 +92,9 @@ async function getPortfolioContext(lang: string): Promise<string> {
 
     return context;
   } catch (error) {
-    console.error(`Failed to load portfolio context for lang ${lang}:`, error);
-    return `No portfolio information available for language ${lang}.`;
+    console.error(`Failed to load portfolio context for lang ${lang} from src/data:`, error);
+    // Return a more specific error message for easier debugging in production
+    return `Error: Could not load portfolio information for language '${lang}'. The data file might be missing or inaccessible.`;
   }
 }
 
@@ -117,6 +119,14 @@ export async function chatWithPortfolioAssistant(
     Here is the portfolio information you should use:
     ${portfolioContext}
     `;
+
+  // Check if the context failed to load and return a helpful message
+  if (portfolioContext.startsWith('Error:')) {
+    return {
+      response: `I'm sorry, but I encountered an internal error and couldn't access the portfolio information right now. Please try again later.`
+    };
+  }
+
 
   const result = await generateText({
     model: google('gemini-1.5-flash'),
