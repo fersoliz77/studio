@@ -55,7 +55,8 @@ export function Header() {
     return pathname === '/' ? `#${id}` : `/#${id}`;
   };
 
-  const showNavImage = isScrolled && !isHeroImageVisible;
+  // Modificar showNavImage para que siempre sea true en la página /chat
+  const showNavImage = (isScrolled && !isHeroImageVisible) || pathname === '/chat';
 
   return (
     <header className={cn(
@@ -94,7 +95,6 @@ export function Header() {
               {t(item.label)}
             </Link>
           ))}
-          {/* Eliminado el enlace duplicado al Asistente IA */}
         </nav>
         <div className="flex items-center gap-2">
           <Button asChild className="hidden sm:flex transition-transform duration-300 hover:scale-105">
