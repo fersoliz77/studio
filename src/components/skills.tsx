@@ -118,15 +118,10 @@ const iconColors: { [key: string]: string } = {
 
 
 const CategoryTitle = ({ title }: { title: string }) => {
-  const parts = title.split('&').map(part => part.trim());
+  // Simplificado para renderizar el título directamente como una única cadena de texto
   return (
-    <div className="text-center md:text-left text-2xl font-semibold leading-tight">
-      {parts.map((part, index) => (
-        <React.Fragment key={index}>
-          {part}
-          {index < parts.length - 1 && <div className="font-light text-muted-foreground">&</div>}
-        </React.Fragment>
-      ))}
+    <div className="text-center md:text-left text-2xl font-semibold leading-tight whitespace-nowrap">
+      {title}
     </div>
   );
 };
@@ -216,7 +211,7 @@ export function Skills() {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.5 }}
               >
-                <div className="w-full md:w-1/4 flex-shrink-0 flex items-center justify-center p-4">
+                <div className="w-full md:w-1/4 flex-shrink-0 flex items-center justify-center p-4 md:justify-start">
                   <CategoryTitle title={category.title} />
                 </div>
                 <div className="w-full md:w-3/4">
