@@ -89,14 +89,14 @@
           { "name": "GitHub Actions", "level": 85 },
           { "name": "PWA", "level": 88 }
         ]
-      },
-      "web3": {
-        "title": "Web3",
-        "items": [
-          { "name": "Web3 (en exploración aplicada)", "level": 70 },
-          { "name": "DAO / Tokenomics", "level": 72 }
-        ]
       }
+    },
+    "web3": {
+      "title": "Web3",
+      "items": [
+        { "name": "Web3 (en exploración aplicada)", "level": 70 },
+        { "name": "DAO / Tokenomics", "level": 72 }
+      ]
     },
     "softSkills": {
       "title": "Habilidades Blandas",
@@ -181,24 +181,6 @@
       "title": "Idioma Cambiado",
       "description": "El idioma se actualizó a {{lang}}."
     }
-  },
-  "summarizePage": {
-    "backButton": "Volver al Portfolio",
-    "title": "Generador de Resúmenes de Portfolio con IA",
-    "description": "Genera un resumen profesional para tus proyectos de portfolio usando IA."
-  },
-  "summaryForm": {
-    "title": "Detalles del Proyecto",
-    "description": "Ingresa el nombre de tu proyecto y algunas palabras clave que lo describan.",
-    "projectNameLabel": "Nombre del Proyecto",
-    "projectNamePlaceholder": "ej., App de E-commerce",
-    "keywordsLabel": "Palabras Clave",
-    "keywordsPlaceholder": "ej., React, Stripe, tiempo-real, dashboard",
-    "generateButton": "Generar Resumen",
-    "generatingButton": "Generando...",
-    "generatedSummaryTitle": "Resumen Generado",
-    "loadingMessage": "Generando tu resumen profesional...",
-    "error": "No se pudo generar el resumen. Por favor, intenta de nuevo."
   },
   "chat": {
     "initialGreeting": "¡Hola! Soy el asistente de IA de Fer Soliz. ¿En qué puedo ayudarte con su portafolio?",
