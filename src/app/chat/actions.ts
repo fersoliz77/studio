@@ -3,16 +3,20 @@
 
 import { generateText } from 'ai';
 import { google } from '@ai-sdk/google';
-import fs from 'fs/promises';
-import path from 'path';
 
-// Helper to read and format portfolio context
-async function getPortfolioContext(lang: string): Promise<string> {
+// Direct import of translation files, the idiomatic Next.js way.
+// This ensures they are bundled with the server code and always available.
+import translationEN from '@/../public/locales/en/translation.json';
+import translationES from '@/../public/locales/es/translation.json';
+
+// Helper to get portfolio context from the already imported JSON module.
+function getPortfolioContext(lang: string): string {
   try {
-    // Corrected path to read from 'src/data' which is included in the server bundle
-    const filePath = path.join(process.cwd(), 'src', 'data', lang, 'translation.json');
-    const fileContent = await fs.readFile(filePath, 'utf8');
-    const data = JSON.parse(fileContent);
+    const data = lang === 'es' ? translationES : translationEN;
+
+    if (!data) {
+      throw new Error(`Translation data for lang '${lang}' not found.`);
+    }
 
     let context = `
     --- Portfolio Information (${lang}) ---
@@ -30,12 +34,12 @@ async function getPortfolioContext(lang: string): Promise<string> {
     }
 
     if (data.about) {
-        context += `
+      context += `
     More About Fer Soliz:
     ${data.about.description}
     How I Work: ${data.about.howIWorkDescription}
-    Ideal Clients: ${data.about.idealClientsList.join(', ')}
-    Services Offered: ${data.about.servicesList.join(', ')}
+    Ideal Clients: ${Array.isArray(data.about.idealClientsList) ? data.about.idealClientsList.join(', ') : ''}
+    Services Offered: ${Array.isArray(data.about.servicesList) ? data.about.servicesList.join(', ') : ''}
     `;
     }
 
@@ -45,10 +49,12 @@ async function getPortfolioContext(lang: string): Promise<string> {
     Skills:
     `;
       for (const categoryKey in data.skills.categories) {
-        const category = data.skills.categories[categoryKey];
-        context += `  ${category.title}: ${category.items.map((item: { name: any; }) => item.name).join(', ')}\n`;
+        const category = data.skills.categories[categoryKey as keyof typeof data.skills.categories];
+        if (category && Array.isArray(category.items)) {
+           context += `  ${category.title}: ${category.items.map((item: { name: any; }) => item.name).join(', ')}\n`;
+        }
       }
-      if (data.skills.softSkills && data.skills.softSkills.items) {
+      if (data.skills.softSkills && Array.isArray(data.skills.softSkills.items)) {
         context += `  Soft Skills: ${data.skills.softSkills.items.map((item: { name: any; }) => item.name).join(', ')}\n`;
       }
     }
@@ -62,7 +68,7 @@ async function getPortfolioContext(lang: string): Promise<string> {
     Problem: ${data.projects.project1.problem}
     Solution: ${data.projects.project1.solution}
     Role: ${data.projects.project1.role}
-    Technologies: ${data.projects.project1.technologies.join(', ')}
+    Technologies: ${Array.isArray(data.projects.project1.technologies) ? data.projects.project1.technologies.join(', ') : ''}
     Status: ${data.projects.project1.status}
     Demo: ${data.projects.project1.demoUrl}
 
@@ -70,7 +76,7 @@ async function getPortfolioContext(lang: string): Promise<string> {
     What it is: ${data.projects.project2.what}
     Goal: ${data.projects.project2.goal}
     Role: ${data.projects.project2.role}
-    Technologies: ${data.projects.project2.technologies.join(', ')}
+    Technologies: ${Array.isArray(data.projects.project2.technologies) ? data.projects.project2.technologies.join(', ') : ''}
     Status: ${data.projects.project2.status}
     Demo: ${data.projects.project2.demoUrl}
     `;
@@ -92,9 +98,8 @@ async function getPortfolioContext(lang: string): Promise<string> {
 
     return context;
   } catch (error) {
-    console.error(`Failed to load portfolio context for lang ${lang} from src/data:`, error);
-    // Return a more specific error message for easier debugging in production
-    return `Error: Could not load portfolio information for language '${lang}'. The data file might be missing or inaccessible.`;
+    console.error(`Failed to generate portfolio context for lang ${lang}:`, error);
+    return `Error: Could not generate portfolio information for language '${lang}'.`;
   }
 }
 
@@ -103,13 +108,19 @@ interface ChatOutput {
   response: string;
 }
 
-
 export async function chatWithPortfolioAssistant(
   message: string,
   history: Array<{ role: 'user' | 'model'; content: string }>,
   lang: string
 ): Promise<ChatOutput> {
-  const portfolioContext = await getPortfolioContext(lang);
+  const portfolioContext = getPortfolioContext(lang);
+
+  // Check if the context failed to load and return a helpful message
+  if (portfolioContext.startsWith('Error:')) {
+    return {
+      response: `I'm sorry, but I encountered an internal error and couldn't access the portfolio information right now. Please try again later.`
+    };
+  }
 
   const systemInstruction = `You are a helpful and friendly AI assistant for a developer's online portfolio named Fer Soliz.
     Your goal is to answer questions about Fer Soliz's projects, skills, experience, and general information based ONLY on the provided context.
@@ -119,14 +130,6 @@ export async function chatWithPortfolioAssistant(
     Here is the portfolio information you should use:
     ${portfolioContext}
     `;
-
-  // Check if the context failed to load and return a helpful message
-  if (portfolioContext.startsWith('Error:')) {
-    return {
-      response: `I'm sorry, but I encountered an internal error and couldn't access the portfolio information right now. Please try again later.`
-    };
-  }
-
 
   const result = await generateText({
     model: google('gemini-1.5-flash'),
