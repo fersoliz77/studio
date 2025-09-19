@@ -28,7 +28,6 @@ export function Hero() {
     setIsHeroImageVisible(inView);
   }, [inView, setIsHeroImageVisible]);
 
-
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -58,17 +57,17 @@ export function Hero() {
             transition={{ duration: 0.4 }}
           >
             <div className="relative">
-                <div className="absolute -inset-2 bg-gradient-to-r from-primary to-accent rounded-full blur-xl opacity-50" />
-                <motion.div layoutId="profile-picture">
-                  <Image
-                    src="/profile.png"
-                    alt="Fer Soliz"
-                    width={400}
-                    height={400}
-                    className="rounded-full object-cover shadow-lg border-4 border-background relative"
-                    priority
-                  />
-                </motion.div>
+              <div className="absolute -inset-2 bg-gradient-to-r from-primary to-accent rounded-full blur-xl opacity-50" />
+              <motion.div layoutId="profile-picture">
+                <Image
+                  src="/profile.png"
+                  alt={t('hero.name') || 'Profile Picture'} // Fallback alt text
+                  width={400}
+                  height={400}
+                  className="rounded-full object-cover shadow-lg border-4 border-background relative"
+                  priority
+                />
+              </motion.div>
             </div>
           </motion.div>
           <motion.div
@@ -78,15 +77,14 @@ export function Hero() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
           >
-            {/* Rest of the hero content */}
             <motion.div variants={itemVariants}>
               <Badge variant="secondary">{t('hero.badge')}</Badge>
             </motion.div>
             <motion.h1
-              className="text-4xl md:text-6xl font-bold font-headline tracking-tighter"
+              className="text-4xl md:text-5xl font-bold font-headline tracking-tighter text-balance"
               variants={itemVariants}
             >
-              {t('hero.name')}
+              {t('hero.tagline')}
             </motion.h1>
             <motion.p
               className="text-lg text-muted-foreground"
