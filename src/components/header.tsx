@@ -94,10 +94,11 @@ export function Header() {
               {t(item.label)}
             </Link>
           ))}
+          {/* Eliminado el enlace duplicado al Asistente IA */}
         </nav>
         <div className="flex items-center gap-2">
           <Button asChild className="hidden sm:flex transition-transform duration-300 hover:scale-105">
-            <Link href="/summarize">
+            <Link href="/chat">
               <FaRocket className="mr-2 h-4 w-4" />
               {t('header.aiAssistant')}
             </Link>
@@ -119,7 +120,7 @@ export function Header() {
                   </Link>
                 ))}
                 <Button asChild className="mt-4">
-                  <Link href="/summarize" onClick={closeMobileMenu}>
+                  <Link href="/chat" onClick={closeMobileMenu}>
                     <FaRocket className="mr-2 h-4 w-4" />
                     {t('header.aiAssistant')}
                   </Link>

@@ -199,5 +199,12 @@
     "generatedSummaryTitle": "Resumen Generado",
     "loadingMessage": "Generando tu resumen profesional...",
     "error": "No se pudo generar el resumen. Por favor, intenta de nuevo."
+  },
+  "chat": {
+    "initialGreeting": "¡Hola! Soy el asistente de IA de Fer Soliz. ¿En qué puedo ayudarte con su portafolio?",
+    "inputPlaceholder": "Escribe tu mensaje...",
+    "sendButton": "Enviar",
+    "errorMessage": "Hubo un error al procesar tu solicitud. Por favor, inténtalo de nuevo.",
+    "description": "Pregúntame cualquier cosa sobre mis proyectos, habilidades o experiencia."
   }
 }

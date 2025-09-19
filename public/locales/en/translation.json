@@ -89,28 +89,13 @@
           { "name": "GitHub Actions", "level": 85 },
           { "name": "PWA", "level": 88 }
         ]
-      },
-      "web3": {
-        "title": "Web3",
-        "items": [
-          { "name": "Web3 (applied exploration)", "level": 70 },
-          { "name": "DAO / Tokenomics", "level": 72 }
-        ]
       }
     },
-    "softSkills": {
-      "title": "Soft Skills",
+    "web3": {
+      "title": "Web3",
       "items": [
-        { "key": "problemSolving", "name": "Problem-solving" },
-        { "key": "communication", "name": "Communication" },
-        { "key": "teamwork", "name": "Teamwork" },
-        { "key": "adaptability", "name": "Adaptability" },
-        { "key": "leadership", "name": "Leadership" },
-        { "key": "criticalThinking", "name": "Critical Thinking" },
-        { "key": "creativity", "name": "Creativity" },
-        { "key": "timeManagement", "name": "Time Management" },
-        { "key": "empathy", "name": "Empaty" },
-        { "key": "proactivity", "name": "Proactiveness" }
+        { "name": "Web3 (applied exploration)", "level": 70 },
+        { "name": "DAO / Tokenomics", "level": 72 }
       ]
     }
   },
@@ -199,5 +184,12 @@
     "generatedSummaryTitle": "Generated Summary",
     "loadingMessage": "Generating your professional summary...",
     "error": "Failed to generate summary. Please try again."
+  },
+  "chat": {
+    "initialGreeting": "Hello! I'm Fer Soliz's AI assistant. How can I help you with their portfolio?",
+    "inputPlaceholder": "Type your message...",
+    "sendButton": "Send",
+    "errorMessage": "There was an error processing your request. Please try again.",
+    "description": "Ask me anything about my projects, skills, or experience."
   }
 }
