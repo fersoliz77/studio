@@ -150,7 +150,7 @@
         { "name": "Integración Frontend", "percentage": 60 },
         { "name": "Lanzamiento Beta", "percentage": 30 }
       ],
-      "demoUrl": "https://kdt.vercel.app"
+      "demoUrl": "https://kdts.vercel.app"
     }
   },
   "common": {
