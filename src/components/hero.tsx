@@ -51,7 +51,7 @@ export function Hero() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <motion.div
             ref={setRefs}
-            className="flex justify-center md:order-last"
+            className="flex flex-col items-center md:order-last" // Add flex-col and items-center for vertical alignment
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.8 }}
             transition={{ duration: 0.4 }}
@@ -69,6 +69,10 @@ export function Hero() {
                 />
               </motion.div>
             </div>
+            {/* New Badge for small screens, displayed below the image */}
+            <motion.div variants={itemVariants} className="md:hidden mt-4">
+              <Badge variant="secondary">{t('hero.badge')}</Badge>
+            </motion.div>
           </motion.div>
           <motion.div
             className="space-y-6 text-center md:text-left"
@@ -77,7 +81,8 @@ export function Hero() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
           >
-            <motion.div variants={itemVariants}>
+            {/* Existing Badge for medium and larger screens */}
+            <motion.div variants={itemVariants} className="hidden md:block">
               <Badge variant="secondary">{t('hero.badge')}</Badge>
             </motion.div>
             <motion.h1
