@@ -1,3 +1,5 @@
+import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/card";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
@@ -5,9 +7,39 @@ import { Button } from "./ui/button";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
+import { useToast } from "@/components/ui/use-toast";
 
 export function Contact() {
   const { t } = useTranslation();
+  const { toast } = useToast();
+  const form = useRef<HTMLFormElement>(null);
+  const [isSending, setIsSending] = useState(false);
+
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsSending(true);
+
+    if (form.current) {
+      emailjs.sendForm('service_gmp5tx2', 'template_gjpugf9', form.current, 'UN9L4rz3vc2mZfQaX')
+        .then((result) => {
+            console.log(result.text);
+            toast({
+              title: t('toast.contactSuccess.title'),
+              description: t('toast.contactSuccess.description'),
+            });
+            if (form.current) form.current.reset();
+        }, (error) => {
+            console.log(error.text);
+            toast({
+              title: t('toast.contactError.title'),
+              description: t('toast.contactError.description'),
+              variant: "destructive",
+            });
+        }).finally(() => {
+          setIsSending(false);
+        });
+    }
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -82,12 +114,12 @@ export function Contact() {
                 <CardDescription>{t('contact.formDescription')}</CardDescription>
               </CardHeader>
               <CardContent>
-                <form className="space-y-4">
-                  <Input placeholder={t('contact.namePlaceholder')} />
-                  <Input type="email" placeholder={t('contact.emailPlaceholder')} />
-                  <Textarea placeholder={t('contact.messagePlaceholder')} rows={5} />
-                  <Button type="submit" size="lg" className="w-full md:w-auto transition-transform duration-300 hover:scale-105">
-                    <FaPaperPlane className="mr-2 h-4 w-4" /> {t('contact.sendMessage')}
+                <form ref={form} onSubmit={sendEmail} className="space-y-4">
+                  <Input name="from_name" placeholder={t('contact.namePlaceholder')} required />
+                  <Input type="email" name="from_email" placeholder={t('contact.emailPlaceholder')} required />
+                  <Textarea name="message" placeholder={t('contact.messagePlaceholder')} rows={5} required />
+                  <Button type="submit" size="lg" className="w-full md:w-auto transition-transform duration-300 hover:scale-105" disabled={isSending}>
+                    <FaPaperPlane className="mr-2 h-4 w-4" /> {isSending ? t('contact.sendingMessage') : t('contact.sendMessage')}
                   </Button>
                 </form>
               </CardContent>

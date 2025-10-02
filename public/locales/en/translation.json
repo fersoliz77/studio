@@ -174,7 +174,8 @@
     "namePlaceholder": "Your Name",
     "emailPlaceholder": "Your Email",
     "messagePlaceholder": "Your Message",
-    "sendMessage": "Send Message"
+    "sendMessage": "Send Message",
+    "sendingMessage": "Sending..."
   },
   "footer": {
     "copyright": "All rights reserved."
@@ -183,6 +184,14 @@
     "languageChanged": {
       "title": "Language Changed",
       "description": "Language updated to {{lang}}."
+    },
+    "contactSuccess": {
+      "title": "Message Sent",
+      "description": "Thanks for reaching out. I'll get back to you shortly."
+    },
+    "contactError": {
+      "title": "Sending Error",
+      "description": "There was a problem sending your message. Please try again."
     }
   },
   "summarizePage": {

@@ -174,7 +174,8 @@
     "namePlaceholder": "Tu Nombre",
     "emailPlaceholder": "Tu Email",
     "messagePlaceholder": "Tu Mensaje",
-    "sendMessage": "Enviar Mensaje"
+    "sendMessage": "Enviar Mensaje",
+    "sendingMessage": "Enviando..."
   },
   "footer": {
     "copyright": "Todos los derechos reservados."
@@ -183,6 +184,14 @@
     "languageChanged": {
       "title": "Idioma Cambiado",
       "description": "El idioma se actualizó a {{lang}}."
+    },
+    "contactSuccess": {
+      "title": "Mensaje Enviado",
+      "description": "Gracias por contactarme. Te responderé a la brevedad."
+    },
+    "contactError": {
+      "title": "Error al Enviar",
+      "description": "Hubo un problema al enviar tu mensaje. Por favor, intenta de nuevo."
     }
   },
   "chat": {
