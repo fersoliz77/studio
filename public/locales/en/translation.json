@@ -36,7 +36,7 @@
     ]
   },
   "skills": {
-    "title": "Core skills",
+    "title": "Skills",
     "description": "Specialized in building innovative and efficient solutions with social impact.",
     "categories": {
       "frontend_mobile": {
@@ -55,7 +55,7 @@
       "backend_cloud": {
         "title": "Backend & Cloud",
         "items": [
-          { "name": "Firebase (Auth, Firestore, FCM)", "level": 88 },
+          { "name": "Firebase", "level": 88 },
           { "name": "Python", "level": 80 },
           { "name": "Payments/Stripe", "level": 78 },
           { "name": "Auth/JWT", "level": 85 }
@@ -96,6 +96,21 @@
       "items": [
         { "name": "Web3 (applied exploration)", "level": 70 },
         { "name": "DAO / Tokenomics", "level": 72 }
+      ]
+    },
+    "softSkills": {
+      "title": "Soft Skills",
+      "items": [
+        { "key": "problemSolving", "name": "Problem Solving" },
+        { "key": "communication", "name": "Communication" },
+        { "key": "teamwork", "name": "Teamwork" },
+        { "key": "adaptability", "name": "Adaptability" },
+        { "key": "leadership", "name": "Leadership" },
+        { "key": "criticalThinking", "name": "Critical Thinking" },
+        { "key": "creativity", "name": "Creativity" },
+        { "key": "timeManagement", "name": "Time Management" },
+        { "key": "empathy", "name": "Empathy" },
+        { "key": "proactivity", "name": "Proactivity" }
       ]
     }
   },

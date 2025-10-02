@@ -36,7 +36,7 @@
     ]
   },
   "skills": {
-    "title": "Habilidades clave",
+    "title": "Skills",
     "description": "Especializado en construir soluciones innovadoras y eficientes con impacto social.",
     "categories": {
       "frontend_mobile": {
@@ -55,9 +55,9 @@
       "backend_cloud": {
         "title": "Backend & Cloud",
         "items": [
-          { "name": "Firebase (Auth, Firestore, FCM)", "level": 88 },
+          { "name": "Firebase", "level": 88 },
           { "name": "Python", "level": 80 },
-          { "name": "Integración de pagos/Stripe", "level": 78 },
+          { "name": "Pagos", "level": 78 },
           { "name": "Auth/JWT", "level": 85 }
         ]
       },
@@ -99,7 +99,7 @@
       ]
     },
     "softSkills": {
-      "title": "Habilidades Blandas",
+      "title": "Soft Skills",
       "items": [
         { "key": "problemSolving", "name": "Resolución de problemas" },
         { "key": "communication", "name": "Comunicación" },
