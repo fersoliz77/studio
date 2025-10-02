@@ -2,10 +2,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./ui/
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
-// Eliminadas las importaciones de lucide-react
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
-// Importar iconos de react-icons
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaPaperPlane } from 'react-icons/fa';
 
 export function Contact() {
@@ -52,9 +50,9 @@ export function Contact() {
                 <FaEnvelope className="h-6 w-6" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold">{t('contact.email')}</h3>
-                <a href="mailto:jane.doe@example.com" className="text-muted-foreground hover:text-primary transition-colors">
-                  jane.doe@example.com
+                <h3 className="text-lg font-semibold">{t('contact.emailTitle')}</h3>
+                <a href={`mailto:${t('contact.email')}`} className="text-muted-foreground hover:text-primary transition-colors">
+                  {t('contact.email')}
                 </a>
               </div>
             </motion.div>
@@ -63,8 +61,8 @@ export function Contact() {
                 <FaPhone className="h-6 w-6" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold">{t('contact.phone')}</h3>
-                <p className="text-muted-foreground">+1 (555) 123-4567</p>
+                <h3 className="text-lg font-semibold">{t('contact.phoneTitle')}</h3>
+                <p className="text-muted-foreground">{t('contact.phone')}</p>
               </div>
             </motion.div>
             <motion.div className="flex items-center gap-4" variants={itemVariants}>
@@ -72,8 +70,8 @@ export function Contact() {
                 <FaMapMarkerAlt className="h-6 w-6" />
               </div>
               <div>
-                <h3 className="text-lg font-semibold">{t('contact.location')}</h3>
-                <p className="text-muted-foreground">San Francisco, CA</p>
+                <h3 className="text-lg font-semibold">{t('contact.locationTitle')}</h3>
+                <p className="text-muted-foreground">{t('contact.location')}</p>
               </div>
             </motion.div>
           </div>

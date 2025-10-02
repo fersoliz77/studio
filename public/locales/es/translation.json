@@ -162,7 +162,10 @@
   },
   "contact": {
     "title": "Contacto",
-    "description": "Siempre estoy abierto a discutir nuevos proyectos, ideas creativas u oportunidades para ser parte de tus visiones. Mi WhatsApp: +54 9 11 6039-0824.",
+    "description": "Siempre estoy abierto a discutir nuevos proyectos, ideas creativas u oportunidades para ser parte de tus visiones.",
+    "emailTitle": "Email",
+    "phoneTitle": "Teléfono",
+    "locationTitle": "Ubicación",
     "email": "fernandomsoliz@gmail.com",
     "phone": "+54 9 11 6039-0824",
     "location": "Buenos Aires, Argentina",

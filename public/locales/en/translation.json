@@ -162,7 +162,10 @@
   },
   "contact": {
     "title": "Get in Touch",
-    "description": "I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions. My WhatsApp: +54 9 11 6039-0824.",
+    "description": "I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.",
+    "emailTitle": "Email",
+    "phoneTitle": "Phone",
+    "locationTitle": "Location",
     "email": "fernandomsoliz@gmail.com",
     "phone": "+54 9 11 6039-0824",
     "location": "Buenos Aires, Argentina",
