@@ -30,7 +30,7 @@ export default function Home() {
         <Contact />
       </main>
       <footer className="py-6 text-center text-muted-foreground">
-        <p>&copy; {new Date().getFullYear()} Fer Soliz. {t('footer.copyright')}</p>
+        <p>&copy; {new Date().getFullYear()} Fer Soliz.</p>
       </footer>
     </div>
   );

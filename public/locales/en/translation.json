@@ -177,9 +177,6 @@
     "sendMessage": "Send Message",
     "sendingMessage": "Sending..."
   },
-  "footer": {
-    "copyright": "All rights reserved."
-  },
   "toast": {
     "languageChanged": {
       "title": "Language Changed",

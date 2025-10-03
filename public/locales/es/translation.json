@@ -148,7 +148,7 @@
         { "name": "Investigación y Whitepaper", "percentage": 100 },
         { "name": "Desarrollo de Smart Contract", "percentage": 70 },
         { "name": "Integración Frontend", "percentage": 60 },
-        { "name": "Lanzamiento Beta", "percentage": 30 }
+        { "name": "Beta Launch", "percentage": 30 }
       ],
       "demoUrl": "https://kdts.vercel.app"
     }
@@ -176,9 +176,6 @@
     "messagePlaceholder": "Tu Mensaje",
     "sendMessage": "Enviar Mensaje",
     "sendingMessage": "Enviando..."
-  },
-  "footer": {
-    "copyright": "Todos los derechos reservados."
   },
   "toast": {
     "languageChanged": {
