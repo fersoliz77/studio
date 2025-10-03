@@ -138,7 +138,7 @@
       "demoUrl": "https://bajoflores.vercel.app"
     },
     "project2": {
-      "title": "KDT (DAO for couriers)",
+      "title": "KDT",
       "what": "DAO platform with tokenomics to align incentives among couriers and clients.",
       "role": "Governance design + dual app + metrics; L2 exploration for tokens/payments.",
       "goal": "Real governance and sustainable ecosystem.",
@@ -151,6 +151,23 @@
         { "name": "Beta Launch", "percentage": 30 }
       ],
       "demoUrl": "https://kdts.vercel.app"
+    },
+    "project3": {
+      "title": "SudOne",
+      "what": "Sports and digital collectibles platform: leagues, rankings, and card marketplace.",
+      "problem": "Amateur leagues and players lack a unified digital space to organize competitions, track performance, and gamify the experience.",
+      "solution": "Web application with tournament management, dynamic player rankings ('SudPoints'), user profiles, and a marketplace for digital collectible cards.",
+      "role": "Product + full-stack (Next.js + React + Tailwind + Firebase).",
+      "goal": "To unify sports tournaments and digital collectibles into a scalable and gamified ecosystem.",
+      "status": "In Production",
+      "technologies": ["Next.js", "React", "Tailwind", "Firebase"],
+      "timeline_events": [
+        { "name": "Concept & Discovery", "percentage": 100 },
+        { "name": "MVP Development", "percentage": 100 },
+        { "name": "User Testing & Iteration", "percentage": 70 },
+        { "name": "Deployment & Monitoring", "percentage": 60 }
+      ],
+      "demoUrl": "https://www.sudonesite.com"
     }
   },
   "common": {

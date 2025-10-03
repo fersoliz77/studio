@@ -138,7 +138,7 @@
       "demoUrl": "https://bajoflores.vercel.app"
     },
     "project2": {
-      "title": "KDT (DAO para repartidores)",
+      "title": "KDT",
       "what": "Plataforma DAO con tokenomics para alinear incentivos entre repartidores y clientes.",
       "role": "Diseño de gobernanza + app dual + métricas; exploración de L2 para tokens/pagos.",
       "goal": "Gobernanza real y ecosistema sostenible.",
@@ -151,6 +151,23 @@
         { "name": "Beta Launch", "percentage": 30 }
       ],
       "demoUrl": "https://kdts.vercel.app"
+    },
+    "project3": {
+      "title": "SudOne",
+      "what": "Plataforma deportiva y de coleccionables digitales: ligas, rankings y marketplace de cartas.",
+      "problem": "Las ligas amateurs y los jugadores no cuentan con un espacio digital unificado para organizar competencias, seguir el rendimiento y gamificar la experiencia.",
+      "solution": "Aplicación web con gestión de torneos, ranking dinámico de jugadores (“SudPoints”), perfiles de usuario y un marketplace para cartas coleccionables digitales.",
+      "role": "Producto + full-stack (Next.js + React + Tailwind + Firebase).",
+      "goal": "Unificar torneos deportivos y coleccionables digitales en un ecosistema escalable y gamificado.",
+      "status": "En Producción",
+      "technologies": ["Next.js", "React", "Tailwind", "Firebase"],
+      "timeline_events": [
+        { "name": "Concepto & Descubrimiento", "percentage": 100 },
+        { "name": "Desarrollo MVP", "percentage": 100 },
+        { "name": "Testing de usuarios & Iteración", "percentage": 70 },
+        { "name": "Despliegue & Monitoreo", "percentage": 60 }
+      ],
+      "demoUrl": "https://www.sudonesite.com"
     }
   },
   "common": {
