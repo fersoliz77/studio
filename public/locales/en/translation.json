@@ -167,7 +167,7 @@
         { "name": "User Testing & Iteration", "percentage": 70 },
         { "name": "Deployment & Monitoring", "percentage": 60 }
       ],
-      "demoUrl": "http://sudone.vercel.app"
+      "demoUrl": "https://sudone.vercel.app"
     }
   },
   "common": {
