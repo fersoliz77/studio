@@ -168,6 +168,23 @@
         { "name": "Deployment & Monitoring", "percentage": 60 }
       ],
       "demoUrl": "https://sudone.vercel.app"
+    },
+    "project4": {
+      "title": "FM 88.1",
+      "what": "Radio station website.",
+      "problem": "The radio station needs a modern and accessible web presence.",
+      "solution": "A web app with live streaming, show schedules, and news.",
+      "role": "Product + full-stack (Next.js + React + Tailwind + Firebase).",
+      "goal": "To create a user-friendly and engaging online experience for the radio's listeners.",
+      "status": "In Production",
+      "technologies": ["Next.js", "React", "Tailwind", "Firebase"],
+      "timeline_events": [
+        { "name": "Concept & Discovery", "percentage": 100 },
+        { "name": "MVP Development", "percentage": 100 },
+        { "name": "User Testing & Iteration", "percentage": 100 },
+        { "name": "Deployment & Monitoring", "percentage": 100 }
+      ],
+      "demoUrl": "https://www.fmbajoflores.com.ar"
     }
   },
   "common": {

@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ProjectCard } from "./project-card";
 import { Button } from "@/components/ui/button";
 
-const projectKeys = ["project1", "project2", "project3"];
+const projectKeys = ["project1", "project2", "project3", "project4"];
 
 export function Projects() {
   const { t } = useTranslation();
@@ -72,7 +72,7 @@ export function Projects() {
 
         {/* Desktop Grid */}
         <motion.div
-          className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="hidden md:grid md:grid-cols-2 lg:grid-cols-2 gap-8"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
